@@ -84,16 +84,25 @@
 
 
 
-<meta name="description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：">
+<meta name="description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
+
+[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
+#if DEBU">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目接入">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/07/项目接入/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：">
-<meta property="og:updated_time" content="2017-03-07T06:50:12.000Z">
+<meta property="og:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
+
+[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
+#if DEBU">
+<meta property="og:updated_time" content="2017-03-07T08:17:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目接入">
-<meta name="twitter:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：">
+<meta name="twitter:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
+
+[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
+#if DEBU">
 
 
 
@@ -331,7 +340,7 @@
       
 
       
-        <p>NJCS的接入主要有四个部分：<br>1：设置异常监听<br>2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）<br>3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）<br>4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）<br>接入示例：<a id="more"></a></p>
+        <p>NJCS的接入主要有四个部分：<br>1：设置异常监听<br>2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）<br>3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）<br>4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）<br>接入示例：</p>
 <pre>
 [NJCS setExceptionHandler:^(NSDictionary *exceptions) {
 #if DEBUG

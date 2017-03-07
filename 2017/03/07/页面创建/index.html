@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="ViewController创建示例：1:Native创建NJCSViewController界面
-UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initD">
+UIViewController targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initDa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面创建">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/07/页面创建/index.html">
 <meta property="og:site_name" content="imCoder">
 <meta property="og:description" content="ViewController创建示例：1:Native创建NJCSViewController界面
-UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initD">
-<meta property="og:updated_time" content="2017-03-07T08:09:29.000Z">
+UIViewController targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initDa">
+<meta property="og:updated_time" content="2017-03-07T08:16:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面创建">
 <meta name="twitter:description" content="ViewController创建示例：1:Native创建NJCSViewController界面
-UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initD">
+UIViewController targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initDa">
 
 
 
@@ -335,13 +335,8 @@ UIViewController *targetViewController = [NJCS creatViewControllerWithSessionNam
 
       
         <p>ViewController创建示例：<br>1:Native创建NJCSViewController界面</p>
-<p><pre><br>UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initData:nil];<br></pre><br>使用NJCS类方法：</p>
-<ul>
-<li>(NJCSBaseViewController <em>)creatViewControllerWithSessionName:(NSString </em>)sessionName jsFileName:(NSString <em>)jsFileName initData:(NSString </em>)initData;<br>参数介绍：<br>sessionName：viewController实例名称，须全局唯一<br>jsFileName：与实例名为sessionName的viewController对应的js文件名称<br>initData：viewController初始化时所需数据，如从上层界面跳转到当前界面时带过来的，或者接口请求完成后得到数据然后跳转界面时的数据<br>2：JS创建NJCSViewController界面<br><pre><br>NJCSVCManager.pushTargetViewControllerDataAnimated(“targetViewController”, initData, true/false);<br></pre><br>js在控制viewCongroller不需要生成ViewController实例，只需通过NJCSVCManager的</li>
-</ul>
-<ul>
-<li>(void)pushTargetViewController:(NSString *)jsFile data:(id)data animated:(BOOL)flag<br>方法即可，Native会根据相应的参数创建与之对应的viewController，参数介绍：<br>jsFile:与ViewController对应的js文件名称<br>data：初始化所需数据<br>animated：是否有跳转动画</li>
-</ul>
+<p><pre><br>UIViewController <em>targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initData:nil];<br></em></pre><br>使用NJCS类方法：<br>+ (NJCSBaseViewController )creatViewControllerWithSessionName:(NSString <em>)sessionName jsFileName:(NSString </em>)jsFileName initData:(NSString *)initData;<br>参数介绍：<br>sessionName：viewController实例名称，须全局唯一<br>jsFileName：与实例名为sessionName的viewController对应的js文件名称<br>initData：viewController初始化时所需数据，如从上层界面跳转到当前界面时带过来的，或者接口请求完成后得到数据然后跳转界面时的数据<br>2：JS创建NJCSViewController界面</p>
+<p><pre><br>NJCSVCManager.pushTargetViewControllerDataAnimated(“targetViewController”, initData, true/false);<br></pre><br>js在控制viewCongroller不需要生成ViewController实例，只需通过NJCSVCManager的<br>- (void)pushTargetViewController:(NSString *)jsFile data:(id)data animated:(BOOL)flag<br>方法即可，Native会根据相应的参数创建与之对应的viewController，参数介绍：<br>jsFile:与ViewController对应的js文件名称<br>data：初始化所需数据<br>animated：是否有跳转动画</p>
 <p>关于ViewController控制相关在【页面跳转】会有详细介绍。</p>
 
       
