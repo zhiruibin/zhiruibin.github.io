@@ -338,7 +338,7 @@
         
           
             <p>ViewController创建示例：<br>1:Native创建NJCSViewController界面</p>
-<p><pre><br>UIViewController <em>targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initData:nil];<br></em></pre><br>使用NJCS类方法：<br>+ (NJCSBaseViewController )creatViewControllerWithSessionName:(NSString <em>)sessionName jsFileName:(NSString </em>)jsFileName initData:(NSString *)initData;<br>参数介绍：<br>sessionName：viewController实例名称，须全局唯一<br>jsFileName：与实例名为sessionName的viewController对应的js文件名称<br>initData：viewController初始化时所需数据，如从上层界面跳转到当前界面时带过来的，或者接口请求完成后得到数据然后跳转界面时的数据<br>2：JS创建NJCSViewController界面</p>
+<p><pre><br>UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initData:nil];<br></pre><br>使用NJCS类方法：<br>+ (NJCSBaseViewController <em>)creatViewControllerWithSessionName:(NSString </em>)sessionName jsFileName:(NSString <em>)jsFileName initData:(NSString </em>)initData;<br>参数介绍：<br>sessionName：viewController实例名称，须全局唯一<br>jsFileName：与实例名为sessionName的viewController对应的js文件名称<br>initData：viewController初始化时所需数据，如从上层界面跳转到当前界面时带过来的，或者接口请求完成后得到数据然后跳转界面时的数据<br>2：JS创建NJCSViewController界面</p>
 <p><pre><br>NJCSVCManager.pushTargetViewControllerDataAnimated(“targetViewController”, initData, true/false);<br></pre><br>js在控制viewCongroller不需要生成ViewController实例，只需通过NJCSVCManager的<br>- (void)pushTargetViewController:(NSString *)jsFile data:(id)data animated:(BOOL)flag<br>方法即可，Native会根据相应的参数创建与之对应的viewController，参数介绍：<br>jsFile:与ViewController对应的js文件名称<br>data：初始化所需数据<br>animated：是否有跳转动画</p>
 <p>关于ViewController控制相关在【页面跳转】会有详细介绍。</p>
 
