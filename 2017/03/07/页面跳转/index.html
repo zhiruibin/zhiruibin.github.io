@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IOS,OC,Objective-C," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="水滴石穿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="imCoder">
-<meta property="og:url" content="http://www.imcoder.com/archives/2016/11/index.html">
+<meta name="description" content="代码示例：
+NJCSVCManager.pushViewControllerDataAnimated(“ZCMCreateDetailCompanyViewController”, null, true);NJCSVCManager.pushViewControllerDataAnimated(“AuthListViewController”, null, true);[[NJCSVCManage">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面跳转">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/07/页面跳转/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="水滴石穿">
+<meta property="og:description" content="代码示例：
+NJCSVCManager.pushViewControllerDataAnimated(“ZCMCreateDetailCompanyViewController”, null, true);NJCSVCManager.pushViewControllerDataAnimated(“AuthListViewController”, null, true);[[NJCSVCManage">
+<meta property="og:updated_time" content="2017-03-07T11:21:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="imCoder">
-<meta name="twitter:description" content="水滴石穿">
+<meta name="twitter:title" content="页面跳转">
+<meta name="twitter:description" content="代码示例：
+NJCSVCManager.pushViewControllerDataAnimated(“ZCMCreateDetailCompanyViewController”, null, true);NJCSVCManager.pushViewControllerDataAnimated(“AuthListViewController”, null, true);[[NJCSVCManage">
 
 
 
@@ -113,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/archives/2016/11/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/07/页面跳转/"/>
 
 
-  <title> 归档 | imCoder </title>
+  <title> 页面跳转 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +139,7 @@
   
   
 
-  <div class="container one-collumn   page-archive  ">
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -243,73 +247,171 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 8 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                页面跳转
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T17:33:55+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/页面跳转/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/页面跳转/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>代码示例：</p>
+<p><pre><br>NJCSVCManager.pushViewControllerDataAnimated(“ZCMCreateDetailCompanyViewController”, null, true);<br>NJCSVCManager.pushViewControllerDataAnimated(“AuthListViewController”, null, true);<br>[[NJCSVCManager shareInstance] pushTargetViewController:@”exampJSFile” data:nil animated:YES];<br></pre><br>关于NJCS的页面跳转是有NJCSVCManager控制的主要有以下几个方法，下面会一一进行介绍：<br>1:- (void)pushTargetViewController:(NSString <em>)jsFile data:(id)data animated:(BOOL)flag;<br>使用情况：跳转到js控制的viewController<br>调用环境：Native JS<br>参数说明：<br>jsFile：与viewController对应的js文件名称<br>data：viewController初始化时所需数据<br>animated：是否显示跳转动画<br>2:- (void)pushViewController:(NSString </em>)className data:(id)data animated:(BOOL)flag;<br>使用情况：跳转到Native的ViewController<br>调用环境：Native JS<br>参数说明：<br>className：Native对应的类名字<br>data：初始化所需数据<br>animated：是否显示跳转动画<br>3:- (void)popViewControllerAnimated:(BOOL)flag;<br>使用情况：弹出当前ViewController<br>使用环境：Native  JS<br>参数说明：<br>flag：是否显示跳转动画<br><a id="more"></a><br>4:- (void)popToTargetViewController:(NSString <em>)jsFile animated:(BOOL)flag;<br>使用情况：弹出到某个viewController，且这个ViewController是由JS控制的<br>使用环境：Native JS<br>参数说明：<br>jsFile: 与viewController对应的js文件<br>animated：是否显示跳转动画<br>5:- (void)popToViewController:(NSString </em>)className animated:(BOOL)flag;<br>使用情况：弹出到某个viewController<br>使用环境：Native JS<br>参数说明：<br>className：Native对应的类名字<br>animated：是否显示跳转动画<br>6:- (void)presentTargetViewController:(NSString <em>)jsFile data:(id)data animated:(BOOL)flag complete:(NSDictionary </em>)completion;<br>使用情况：present出某个界面<br>使用环境：Native JS<br>参数说明：<br>jsFile: 与viewController对应的js文件<br>animated：是否显示跳转动画<br>completion：显示完成后的回掉所需数据<br>7:- (void)presentViewController:(NSString <em>)className data:(id)data animated:(BOOL)flag complete:(NSDictionary </em>)completion;<br>使用情况：present出某个界面<br>使用环境：Native JS<br>参数说明：<br>className：Native对应的类名字<br>animated：是否显示跳转动画<br>completion：显示完成后的回掉所需数据<br>8:- (void)dismissViewControllerAnimated: (BOOL)flag completion: (NSDictionary *)completion;<br>使用情况：回退掉当前界面<br>使用环境：Native JS<br>参数说明：<br>animated：是否显示跳转动画<br>completion：显示完成后的回掉所需数据</p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOS/" rel="tag">#IOS</a>
+          
+            <a href="/tags/OC/" rel="tag">#OC</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/页面创建/" rel="next" title="页面创建">
+                <i class="fa fa-chevron-left"></i> 页面创建
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/01/Hexo-deploy遇到的坑/" itemprop="url">
-              
-                <span itemprop="name">Hexo deploy遇到的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-01T13:29:08+08:00"
-              content="2016-11-01" >
-          11-01
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/07/页面跳转/"
+           data-title="页面跳转" data-url="http://www.imcoder.com/2017/03/07/页面跳转/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -329,8 +431,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -380,6 +491,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -476,11 +598,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
