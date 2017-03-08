@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="水滴石穿">
+<meta name="description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NJCS系列--NJCS实现原理">
-<meta property="og:url" content="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/index.html">
+<meta property="og:title" content="使用封装组件">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/08/使用封装组件/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="水滴石穿">
-<meta property="og:updated_time" content="2017-03-07T03:45:44.000Z">
+<meta property="og:description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
+<meta property="og:updated_time" content="2017-03-08T13:39:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NJCS系列--NJCS实现原理">
-<meta name="twitter:description" content="水滴石穿">
+<meta name="twitter:title" content="使用封装组件">
+<meta name="twitter:description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
 
 
 
@@ -114,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/08/使用封装组件/"/>
 
 
-  <title> NJCS系列--NJCS实现原理 | imCoder </title>
+  <title> 使用封装组件 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +268,7 @@
             
             
               
-                NJCS系列--NJCS实现原理
+                使用封装组件
               
             
           </h1>
@@ -277,8 +280,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T11:12:14+08:00" content="2017-03-07">
-              2017-03-07
+            <time itemprop="dateCreated" datetime="2017-03-08T20:26:02+08:00" content="2017-03-08">
+              2017-03-08
             </time>
           </span>
 
@@ -307,8 +310,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/07/NJCS系列-NJCS实现原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/NJCS系列-NJCS实现原理/" itemprop="commentsCount"></span>
+                <a href="/2017/03/08/使用封装组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/使用封装组件/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,7 +334,123 @@
       
 
       
-        
+        <p>1：现有组件简单介绍<br>目前已封装的组件有：<br>NJCSUIView<br>NJCSUILabel<br>NJCSUIIconLabel<br>NJCSUITextField<br>NJCSUIButton<br>NJCSUITableView<br>NJCSUITableViewCell<br>……</p>
+<p>对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：<br>1-1：有与原生封装组件对应的JS组件<br>defineClass(“NJCSUILabel: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIButton: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIIconLabel: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIImageView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIWebView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUITableView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUITextField: NJCSUIView”, {<br>});<br>defineClass(“NJCSUISubView: NJCSUIView”, {}, {<br>    create:function(targetViewClass, instanceName, props){<br>        var instance = new this();<br>        instance.className = this.className;<br>        instance.instanceName = instanceName;<br>        instance.targetViewClass = targetViewClass;<br>        return instance;<br>    }<br>});<br>示例代码：</p>
+<pre>
+var tableView = NJCSUITableView.create("tableView");//创建实例
+this.addElement(tableView);//将示例添加到ViewController中的view内，addElement在被调用的时候才会在Native中创建一个与之对应的Native对象实例，所以只有调用addElement之后，才能调用该实例的方法，否则会因找不到对象而产生异常
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));
+</pre>
+1-2：只有Native对象而没有与之对应的js对象
+示例代码：
+<pre>
+var UITableView = getNativeClassWithClassName("UITableView");//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));//设置tableView的frame
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableView的背景颜色
+</pre>
+看到这里可能会有人问，既然不封装就能直接使用干嘛要封装一层的，目的何在？
+的确所有的组件只要Native内存在的，在js内是可以直接使用的，之所以要封装一层目的是为了在频繁操作某个对象的属性时（如：频繁设置UILabel实例的frame
+/text/backgroundColer……），减少JS和Native的通信次数，这里先简单提一下，后续在介绍“簇调用”时详细介绍。
+<a id="more"></a>
+2:组件封装
+.h文件如下：
+<pre>
+#import "NJCSUIView.h"
+@interface NJCSUILabel : NJCSUIView
+@property (nonatomic, strong) UILabel *label;
+@end
+</pre>
+.m文件如下：
+<pre>
+#import "NJCSUILabel.h"
+#import "UIColor+NJCS.h"
+@implementation NJCSUILabel
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _label = [[UILabel alloc] init];
+        self.targetView = _label;
+        [self addSubview:_label];
+    }
+
+    return self;
+}
+- (void)setNumberOfLines:(NSString *)lineNumber
+{
+    [_label setLineBreakMode:NSLineBreakByCharWrapping];
+    [_label setNumberOfLines:[lineNumber integerValue]];
+}
+- (void)setText:(NSString *)text
+{
+    [_label setText:text];
+}
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [_label setBackgroundColor:backgroundColor];
+}
+- (void)setTextAlignment:(NSString *)textAlignment
+{
+    [_label setTextAlignment:[textAlignment intValue]];
+}
+- (void)setTextColor:(UIColor *)textColor
+{
+    [_label setTextColor:textColor];
+}
+- (void)setFont:(UIFont *)fontValue
+{
+    [_label setFont:fontValue];
+}
+- (void)setDefaultValue:(NSString *)defaultValue
+{
+    super.defaultValue = defaultValue;
+    _label.text = defaultValue;
+}
+@end
+</pre>
+从代码可以看出，Native组件的封装并没有什么特殊之处，只是用过组合的方式将UILabel作为NJCSUIView子类的属性而已，常用的方法也进行了简单封装（其实这也方法也是可以不封装的，后续将实现原理的时候会详细介绍）
+与NJCSUILabel对应的JS组件封装就更加简单了代码如下：
+<pre>
+defineClass("NJCSUILabel: NJCSUIView", {
+});
+</pre>
+定义了一个继承与NJCSUIView的类NJCSUILabel（这个类是JSContext内部的类，和OC的是不同的）。
+这里重点介绍一下defineClass方法，源码如下：
+<pre>
+// 类定义接口
+function defineClass(declaration, instMethods, clsMethods) {
+
+    var clsList = declaration.split(':'),
+        clsName = clsList[0].trim(),
+        superClsName = clsList[1] ? clsList[1].trim() : null;
+
+    global[clsName] = global[superClsName].extend(instMethods);
+    global[clsName].className = clsName;
+
+    // 类方法处理
+    for (var methodName in clsMethods) {
+
+        global[clsName][methodName] = clsMethods[methodName];
+    }
+}
+</pre>
+defineClass方法有三个参数，逐一介绍：
+declaration：要声明的类名和想继承的父类，字符串格式，如：”SubClass：SuperCLass”，冒号左边为要声明的类名字，冒号右边的时父类的名字;
+instMethods：实例方法生命，字典格式，如：{init:function(){}, viewWillAppear:function(){},viewDidAppear:function(){}};
+clsMethods：类方法声明，字典格式，如：{doSomething:function(){}, doSomethingTwo:function(){}};
+有人可能会问，为什么没有属性的声明，因为属性可以在JS类内直接声明即可，如下：
+<pre>
+defineClass("SubClass:SuperCLass",{init:function(){
+  this.instanceName = "";//实例属性instanceName
+  this.id = "";//实例属性id
+  }}, exampleFun:function(){
+    this.instanceName = "TestName";//对instanceName属性进行赋值
+    this.id = "110";//对id属性进行赋值
+    });
+</pre>
+
       
     </div>
 
@@ -366,17 +485,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/07/NJCS系列-NJCS功能介绍/" rel="next" title="NJCS系列--NJCS使用文档">
-                <i class="fa fa-chevron-left"></i> NJCS系列--NJCS使用文档
+              <a href="/2017/03/07/页面跳转/" rel="next" title="页面跳转">
+                <i class="fa fa-chevron-left"></i> 页面跳转
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/07/项目接入/" rel="prev" title="项目接入">
-                项目接入 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -405,8 +520,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/07/NJCS系列-NJCS实现原理/"
-           data-title="NJCS系列--NJCS实现原理" data-url="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/">
+      <div class="ds-thread" data-thread-key="2017/03/08/使用封装组件/"
+           data-title="使用封装组件" data-url="http://www.imcoder.com/2017/03/08/使用封装组件/">
       </div>
     
   </div>
