@@ -85,18 +85,24 @@
 
 
 <meta name="description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
-对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件
+
+defineClass(&quot;NJCSUILabel:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用封装组件">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/08/使用封装组件/index.html">
 <meta property="og:site_name" content="imCoder">
 <meta property="og:description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
-对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
-<meta property="og:updated_time" content="2017-03-08T13:39:03.000Z">
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件
+
+defineClass(&quot;NJCSUILabel:">
+<meta property="og:updated_time" content="2017-03-08T14:00:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用封装组件">
 <meta name="twitter:description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
-对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件defineClass(“NJCSUILabel: N">
+对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件
+
+defineClass(&quot;NJCSUILabel:">
 
 
 
@@ -335,7 +341,34 @@
 
       
         <p>1：现有组件简单介绍<br>目前已封装的组件有：<br>NJCSUIView<br>NJCSUILabel<br>NJCSUIIconLabel<br>NJCSUITextField<br>NJCSUIButton<br>NJCSUITableView<br>NJCSUITableViewCell<br>……</p>
-<p>对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：<br>1-1：有与原生封装组件对应的JS组件<br>defineClass(“NJCSUILabel: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIButton: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIIconLabel: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIImageView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUIWebView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUITableView: NJCSUIView”, {<br>});<br>defineClass(“NJCSUITextField: NJCSUIView”, {<br>});<br>defineClass(“NJCSUISubView: NJCSUIView”, {}, {<br>    create:function(targetViewClass, instanceName, props){<br>        var instance = new this();<br>        instance.className = this.className;<br>        instance.instanceName = instanceName;<br>        instance.targetViewClass = targetViewClass;<br>        return instance;<br>    }<br>});<br>示例代码：</p>
+<p>对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：<br>1-1：有与原生封装组件对应的JS组件</p>
+<pre>
+defineClass("NJCSUILabel: NJCSUIView", {
+});
+defineClass("NJCSUIButton: NJCSUIView", {
+});
+defineClass("NJCSUIIconLabel: NJCSUIView", {
+});
+defineClass("NJCSUIImageView: NJCSUIView", {
+});
+defineClass("NJCSUIWebView: NJCSUIView", {
+});
+defineClass("NJCSUITableView: NJCSUIView", {
+});
+defineClass("NJCSUITextField: NJCSUIView", {          
+});
+defineClass("NJCSUISubView: NJCSUIView", {}, {
+    create:function(targetViewClass, instanceName, props){
+        var instance = new this();
+        instance.className = this.className;
+        instance.instanceName = instanceName;
+        instance.targetViewClass = targetViewClass;
+        return instance;
+    }
+});
+</pre>
+
+<p>示例代码：</p>
 <pre>
 var tableView = NJCSUITableView.create("tableView");//创建实例
 this.addElement(tableView);//将示例添加到ViewController中的view内，addElement在被调用的时候才会在Native中创建一个与之对应的Native对象实例，所以只有调用addElement之后，才能调用该实例的方法，否则会因找不到对象而产生异常
@@ -363,7 +396,8 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
 @property (nonatomic, strong) UILabel *label;
 @end
 </pre>
-.m文件如下：
+
+<p>.m文件如下：</p>
 <pre>
 #import "NJCSUILabel.h"
 #import "UIColor+NJCS.h"
@@ -371,7 +405,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
 - (instancetype)init
 {
     if (self = [super init]) {
-        _label = [[UILabel alloc] init];
+        \_label = [[UILabel alloc] init];
         self.targetView = _label;
         [self addSubview:_label];
     }
@@ -410,46 +444,9 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
 }
 @end
 </pre>
-从代码可以看出，Native组件的封装并没有什么特殊之处，只是用过组合的方式将UILabel作为NJCSUIView子类的属性而已，常用的方法也进行了简单封装（其实这也方法也是可以不封装的，后续将实现原理的时候会详细介绍）
-与NJCSUILabel对应的JS组件封装就更加简单了代码如下：
-<pre>
-defineClass("NJCSUILabel: NJCSUIView", {
-});
-</pre>
-定义了一个继承与NJCSUIView的类NJCSUILabel（这个类是JSContext内部的类，和OC的是不同的）。
-这里重点介绍一下defineClass方法，源码如下：
-<pre>
-// 类定义接口
-function defineClass(declaration, instMethods, clsMethods) {
 
-    var clsList = declaration.split(':'),
-        clsName = clsList[0].trim(),
-        superClsName = clsList[1] ? clsList[1].trim() : null;
-
-    global[clsName] = global[superClsName].extend(instMethods);
-    global[clsName].className = clsName;
-
-    // 类方法处理
-    for (var methodName in clsMethods) {
-
-        global[clsName][methodName] = clsMethods[methodName];
-    }
-}
-</pre>
-defineClass方法有三个参数，逐一介绍：
-declaration：要声明的类名和想继承的父类，字符串格式，如：”SubClass：SuperCLass”，冒号左边为要声明的类名字，冒号右边的时父类的名字;
-instMethods：实例方法生命，字典格式，如：{init:function(){}, viewWillAppear:function(){},viewDidAppear:function(){}};
-clsMethods：类方法声明，字典格式，如：{doSomething:function(){}, doSomethingTwo:function(){}};
-有人可能会问，为什么没有属性的声明，因为属性可以在JS类内直接声明即可，如下：
-<pre>
-defineClass("SubClass:SuperCLass",{init:function(){
-  this.instanceName = "";//实例属性instanceName
-  this.id = "";//实例属性id
-  }}, exampleFun:function(){
-    this.instanceName = "TestName";//对instanceName属性进行赋值
-    this.id = "110";//对id属性进行赋值
-    });
-</pre>
+<p>从代码可以看出，Native组件的封装并没有什么特殊之处，只是用过组合的方式将UILabel作为NJCSUIView子类的属性而已，常用的方法也进行了简单封装（其实这也方法也是可以不封装的，后续将实现原理的时候会详细介绍）<br>与NJCSUILabel对应的JS组件封装就更加简单了代码如下：</p>
+<p><pre><br>defineClass(“NJCSUILabel: NJCSUIView”, {<br>});<br></pre><br>定义了一个继承与NJCSUIView的类NJCSUILabel（这个类是JSContext内部的类，和OC的是不同的）。<br>关于defineClass方法的使用请参看<a href="">JS类的定义</a>；</p>
 
       
     </div>
@@ -492,6 +489,10 @@ defineClass("SubClass:SuperCLass",{init:function(){
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/08/JS类的声明/" rel="prev" title="JS类的声明">
+                JS类的声明 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -566,7 +567,7 @@ defineClass("SubClass:SuperCLass",{init:function(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
