@@ -96,7 +96,7 @@ defineClass(&quot;NJCSUILabel:">
 对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：1-1：有与原生封装组件对应的JS组件
 
 defineClass(&quot;NJCSUILabel:">
-<meta property="og:updated_time" content="2017-03-08T14:00:03.000Z">
+<meta property="og:updated_time" content="2017-03-08T14:01:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用封装组件">
 <meta name="twitter:description" content="1：现有组件简单介绍目前已封装的组件有：NJCSUIViewNJCSUILabelNJCSUIIconLabelNJCSUITextFieldNJCSUIButtonNJCSUITableViewNJCSUITableViewCell……
@@ -446,7 +446,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
 </pre>
 
 <p>从代码可以看出，Native组件的封装并没有什么特殊之处，只是用过组合的方式将UILabel作为NJCSUIView子类的属性而已，常用的方法也进行了简单封装（其实这也方法也是可以不封装的，后续将实现原理的时候会详细介绍）<br>与NJCSUILabel对应的JS组件封装就更加简单了代码如下：</p>
-<p><pre><br>defineClass(“NJCSUILabel: NJCSUIView”, {<br>});<br></pre><br>定义了一个继承与NJCSUIView的类NJCSUILabel（这个类是JSContext内部的类，和OC的是不同的）。<br>关于defineClass方法的使用请参看<a href="">JS类的定义</a>；</p>
+<p><pre><br>defineClass(“NJCSUILabel: NJCSUIView”, {<br>});<br></pre><br>定义了一个继承与NJCSUIView的类NJCSUILabel（这个类是JSContext内部的类，和OC的是不同的）。<br>关于defineClass方法的使用请参看<a href="http://www.imcoder.win/2017/03/08/JS%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E/" target="_blank" rel="external">JS类的定义</a>；</p>
 
       
     </div>

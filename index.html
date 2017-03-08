@@ -336,8 +336,7 @@
 
       
         
-          
-            <p>如果我想定义一个名字为MineViewController的JS类，代码如下：</p>
+          <p>如果我想定义一个名字为MineViewController的JS类，代码如下：</p>
 <pre>
 defineClass("MineViewController:NJCSBaseViewController", {
   init:function(){
@@ -360,39 +359,11 @@ defineClass("MineViewController:NJCSBaseViewController", {
   }
     });
 </pre>
-上面代码就是定义了一个继承与NJCSBaseViewController且类名为MineViewController,实例方法有：init, viewWillAppear,viewDidAppear,viewWillDisappear,viewDidDisappear,dealloc;
-这里重点介绍一下defineClass方法，源码如下：
-<pre>
-// 类定义接口
-function defineClass(declaration, instMethods, clsMethods) {
-
-    var clsList = declaration.split(':'),
-        clsName = clsList[0].trim(),
-        superClsName = clsList[1] ? clsList[1].trim() : null;
-
-    global[clsName] = global[superClsName].extend(instMethods);
-    global[clsName].className = clsName;
-
-    // 类方法处理
-    for (var methodName in clsMethods) {
-
-        global[clsName][methodName] = clsMethods[methodName];
-    }
-}
-</pre>
-
-<p>defineClass方法有三个参数，逐一介绍：<br>declaration：要声明的类名和想继承的父类，字符串格式，如：”SubClass：SuperCLass”，冒号左边为要声明的类名字，冒号右边的时父类的名字;<br>instMethods：实例方法生命，字典格式，如：{init:function(){}, viewWillAppear:function(){},viewDidAppear:function(){}};<br>clsMethods：类方法声明，字典格式，如：{doSomething:function(){}, doSomethingTwo:function(){}};<br>有人可能会问，为什么没有属性的声明，因为属性可以在JS类内直接声明即可，如下：</p>
-<pre>
-defineClass("SubClass:SuperCLass",{init:function(){
-  this.instanceName = "";//实例属性instanceName
-  this.id = "";//实例属性id
-  }}, exampleFun:function(){
-    this.instanceName = "TestName";//对instanceName属性进行赋值
-    this.id = "110";//对id属性进行赋值
-    });
-</pre>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/08/JS类的声明/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1198,7 +1169,7 @@ if (njcsVersion && njcsVersion > 0) {
 <li><a href="http://www.imcoder.win/2017/03/08/%E4%BD%BF%E7%94%A8%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">NJCSUITableView介绍及使用</a></li>
 <li><a href="http://www.imcoder.win/2017/03/08/%E4%BD%BF%E7%94%A8%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">NJCSUITableViewCell介绍及使用</a></li>
 </ul>
-<p>4-2：<a href="http://www.imcoder.win/2017/03/08/%E4%BD%BF%E7%94%A8%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">组件使用与封装</a><br>5：<a href="">JS类的声明</a><br>6：<a href="">方法调用</a></p>
+<p>4-2：<a href="http://www.imcoder.win/2017/03/08/%E4%BD%BF%E7%94%A8%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">组件使用与封装</a><br>5：<a href="http://www.imcoder.win/2017/03/08/JS%E7%B1%BB%E7%9A%84%E5%A3%B0%E6%98%8E/">JS类的声明</a><br>6：<a href="">方法调用</a></p>
 <ul>
 <li><a href="">链式调用</a></li>
 <li><a href="">簇调用</a></li>
