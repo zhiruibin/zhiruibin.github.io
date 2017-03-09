@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="1:NS_ASSUME_NONNULL_BEGIN / NS_ASSUME_NONNULL_END  
-NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) NSString name;@property (nonatomic, strong) NSString gender;@endNS_AS">
+<meta name="description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
+var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="框架中常用的宏定义">
-<meta property="og:url" content="http://www.imcoder.com/2016/10/25/框架中常用的宏定义/index.html">
+<meta property="og:title" content="NJCS-方法调用">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/09/NJCS-方法调用/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="1:NS_ASSUME_NONNULL_BEGIN / NS_ASSUME_NONNULL_END  
-NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) NSString name;@property (nonatomic, strong) NSString gender;@endNS_AS">
-<meta property="og:updated_time" content="2016-11-12T13:58:35.000Z">
+<meta property="og:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
+var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
+<meta property="og:updated_time" content="2017-03-09T06:56:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="框架中常用的宏定义">
-<meta name="twitter:description" content="1:NS_ASSUME_NONNULL_BEGIN / NS_ASSUME_NONNULL_END  
-NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) NSString name;@property (nonatomic, strong) NSString gender;@endNS_AS">
+<meta name="twitter:title" content="NJCS-方法调用">
+<meta name="twitter:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
+var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
 
 
 
@@ -117,10 +117,10 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/2016/10/25/框架中常用的宏定义/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/09/NJCS-方法调用/"/>
 
 
-  <title> 框架中常用的宏定义 | imCoder </title>
+  <title> NJCS-方法调用 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +268,7 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
             
             
               
-                框架中常用的宏定义
+                NJCS-方法调用
               
             
           </h1>
@@ -280,8 +280,8 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T14:37:54+08:00" content="2016-10-25">
-              2016-10-25
+            <time itemprop="dateCreated" datetime="2017-03-09T14:24:29+08:00" content="2017-03-09">
+              2017-03-09
             </time>
           </span>
 
@@ -310,8 +310,8 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/25/框架中常用的宏定义/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/框架中常用的宏定义/" itemprop="commentsCount"></span>
+                <a href="/2017/03/09/NJCS-方法调用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/NJCS-方法调用/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,13 +334,14 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
       
 
       
-        <p>1:NS_ASSUME_NONNULL_BEGIN / NS_ASSUME_NONNULL_END  </p>
-<p><pre><br>NS_ASSUME_NONNULL_BEGIN<br>@Interface People:NSObject<br>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>gender;<br>@end<br>NS_ASSUME_NONNULL_END<br></pre><br>以上表明属性name和gender是nonnull类型的，在调用[self setName:nil];或者[self setGender:nil]; 编译器会给出警告：Null passed to a callee that requires a non-null argument.<br>只是一个警告，编译还是可以通过的。<a id="more"></a><br>2:DEPRECATED_MSG_ATTRIBUTE<br><pre>@property (nonatomic, assign) NSStringEncoding stringEncoding DEPRECATED_MSG_ATTRIBUTE(“The string encoding is never used.”)</pre><br>用来标注，此方法或者属性不再建议使用，可以在后边添加说明，使用后编译会有警告提示。<br>3:NS_SWIFT_NOTHROW  </p>
-<p><pre>- (nullable id)responseObjectForResponse:(nullable NSURLResponse <em>)response<br>                           data:(nullable NSData </em>)data<br>                          error:(NSError <em> _Nullable __autoreleasing </em>)error NS_SWIFT_NOTHROW;</pre><br>                          使用 NS_SWIFT_NOTHROW , 将不会使用swift的异常抛出机制.<br>4:NS_DESIGNATED_INITIALIZER  </p>
-<p><pre>- (instancetype)initWithBaseURL:(nullable NSURL <em>)url<br>           sessionConfiguration:(nullable NSURLSessionConfiguration </em>)configuration NS_DESIGNATED_INITIALIZER;</pre>    在初始化类的实例时，无论调用关系如何复杂，必须调用一次该类的Designated intializer(可以有多个),对于 Designated intializer，必须调用父类的Designated intializer。对于父类的父类这个规则亦然，对Designated intializer的调用一直要到根类。<br>5:DEPRECATED_ATTRIBUTE<br><pre>@property(nontamic, strong) NSString *name; DEPRECATED_ATTRIBUTE</pre>用来标注此方法或者属性已不再建议使用，如果使用编译时会有警告提示。<br>6:NSParameterAssert<br>断言评估一个条件，如果条件为 false ，调用当前线程的断点句柄。每一个线程有它自已的断点句柄，它是一个 NSAsserttionHandler 类的对象。当被调用时，断言句柄打印一个错误信息，该条信息中包含了方法名、类名或函数名。然后，它就抛出一个 NSInternalInconsistencyException 异常。<br>Assertions evaluate a condition and, if the condition evaluates to false, call the assertion handler for the current thread, passing it a format string and a variable number of arguments. Each thread has its own assertion handler, which is an object of classNSAssertionHandler. When invoked, an assertion handler prints an error message that includes method and class names (or the function name). It then raises anNSInternalInconsistencyException exception.</p>
-<p>这个宏用于确认一个 Objective-C 的方法的有效性。简单提供参数作为条件就行。该宏评估这个参数，如果为 false ，它就打印一个错误日志信息，该信息包含了参数并且抛出一个异常。<br>This macro validates a parameter for an Objective-C method. Simply provide the parameter as the condition argument. The macro evaluates the parameter and, if it is false, it logs an error message that includes the parameter and then raises an exception.</p>
-<p>如果定义了预处理宏 NS_BLOCK_ASSERTIONS 断言就被禁止了。所有的断点宏都返回 void。<br>Assertions are disabled if the preprocessor macro NS_BLOCK_ASSERTIONS is defined. All assertion macros return void.<br>如：</p>
-<p><pre>- (void)doSomethingWithName:(NSString <em>)name id:(NSString </em>)id<br>{<br>    NSParameterAssert(name);<br>    NSParameterAssert(id);<br>}</pre><br>7:NSCParameterAssert<br>作用同NSCParameterAssert，只不过实在c函数中进行断言的。</p>
+        <p>NJCS内方法的调用有两种方式，这里分别介绍一下：<br>1：链式调用<br>代码示例：</p>
+<p><pre><br>var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类<br>var tableView = UITableView.alloc().init();//初始化UITableView实例<br>this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView<br>tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors[“mainScreenWidth”], NJCSMacors[“screenHeight”] - 50));//设置tableView的frame<br>tableView.setBackgroundColor(NJCSUIColor_JS.create(“#999999:0”));//设置tableView的背景颜色<br></pre><br>UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在<a href="">原理文章</a>中介绍。<br>2：簇调用<a id="more"></a><br>代码示例：</p>
+<p><pre><br>var cmds = [];<br>cmds.push(componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]));<br>cmds.push(componentCMD_JS.create(component, “info”, “setText:”, [data.info]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setText:”, [data.tip]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFFFFF”, 0)]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#BBBBBB”)]));<br>var width = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.tip, 11, 13);<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextAlignment:”, [“1”]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setFrame:”, [NJCSCGRect.create(NJCSMacors[“screenWidth”] - width - 30, (50 - 15) / 2, width + 6, 15)]));<br>cmds.push(componentCMD_JS.create(component, “nextIcon”, “setImage:”, [“job_coin_pusharrow”]));</pre></p>
+<p>var infoWidth = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.info, 15, 15);<br>cmds.push(componentCMD_JS.create(component, “info”, “setFrame:”, [NJCSCGRect.create(45, 10, infoWidth, 30)]));<br>cmds.push(componentCMD_JS.create(component, “markView”, “setFrame:”, [NJCSCGRect.create(45 + infoWidth + 5, 22, 6, 6)]));</p>
+<p>if(data.type == “JobQuickPublishOptionViewIdenfitier”){<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#FF704F”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFEAE5”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setCornerRadius:”, [3]));<br>}</p>
+<p>if(data.type == “JobMyCoinViewIdenfitier”){<br>  var IMPrivateDatabaseManageObject = getNativeClassWithClassName([“IMPrivateDatabaseManageObject”]);<br>  var imPrivateDBmanager = IMPrivateDatabaseManageObject.alloc().init();<br>  var clickHot = imPrivateDBmanager.keyValueProxy().stringForKey(“JobMyCoinViewIdenfitierHotTip”);<br>  if(clickHot &amp;&amp; clickHot == “click”){<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [true]));<br>    }else{<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [false]));<br>  }<br>}</p>
+<p>bridgeJS.sendCMDTOComponents(cmds);<br><br>2-1：使用componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]);创建一个cmd<br>源码如下：</p>
+<p><pre><br>var componentCMD_JS = {<br>  create:function(component, childInstanceName, methodName, parameters){<br>    var componentCMD = {};<br>    componentCMD.component = component;<br>    componentCMD.childInstanceName = childInstanceName;<br>    componentCMD.methodName = methodName;<br>    componentCMD.parameters = parameters;<br>    return componentCMD;<br>  }<br>}<br></pre><br>  参数介绍：<br>  component：被操作的对象，这个对象既可以是Native返回的亦可以是JS封装后的实例<br>  childInstanceName:component的子组件，如果为“”则被操作对象既为component本身<br>  methodName：方法的名字<br>  parameters：参数<br>2-2：将生成的cmd push进数组<br>2-3：通过bridgeJS.sendCMDTOComponents(cmds);将cmd数组发送给Native执行，不管数组内有多少个cmd，Native和JS的交互只有一次<br>NJCSUITableViewCell即使以这种方式调用设置各种属性的</p>
 
       
     </div>
@@ -376,17 +377,13 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/24/博客成立啦/" rel="next" title="博客成立啦">
-                <i class="fa fa-chevron-left"></i> 博客成立啦
+              <a href="/2017/03/08/JS类的声明/" rel="next" title="NJCS-JS类的声明">
+                <i class="fa fa-chevron-left"></i> NJCS-JS类的声明
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/01/Hexo-deploy遇到的坑/" rel="prev" title="Hexo deploy遇到的坑">
-                Hexo deploy遇到的坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,8 +412,8 @@ NS_ASSUME_NONNULL_BEGIN@Interface People:NSObject@property (nonatomic, strong) N
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/25/框架中常用的宏定义/"
-           data-title="框架中常用的宏定义" data-url="http://www.imcoder.com/2016/10/25/框架中常用的宏定义/">
+      <div class="ds-thread" data-thread-key="2017/03/09/NJCS-方法调用/"
+           data-title="NJCS-方法调用" data-url="http://www.imcoder.com/2017/03/09/NJCS-方法调用/">
       </div>
     
   </div>

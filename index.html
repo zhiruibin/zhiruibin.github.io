@@ -267,8 +267,131 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/09/NJCS-方法调用/" itemprop="url">
+                  NJCS-方法调用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-09T14:24:29+08:00" content="2017-03-09">
+              2017-03-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/09/NJCS-方法调用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/NJCS-方法调用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>NJCS内方法的调用有两种方式，这里分别介绍一下：<br>1：链式调用<br>代码示例：</p>
+<p><pre><br>var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类<br>var tableView = UITableView.alloc().init();//初始化UITableView实例<br>this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView<br>tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors[“mainScreenWidth”], NJCSMacors[“screenHeight”] - 50));//设置tableView的frame<br>tableView.setBackgroundColor(NJCSUIColor_JS.create(“#999999:0”));//设置tableView的背景颜色<br></pre><br>UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在<a href="">原理文章</a>中介绍。<br>2：簇调用
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/09/NJCS-方法调用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/08/JS类的声明/" itemprop="url">
-                  JS类的声明
+                  NJCS-JS类的声明
                 </a>
               
             
@@ -412,7 +535,7 @@ defineClass("MineViewController:NJCSBaseViewController", {
               
                 
                 <a class="post-title-link" href="/2017/03/08/使用封装组件/" itemprop="url">
-                  使用封装组件
+                  NJCS-使用封装组件
                 </a>
               
             
@@ -580,7 +703,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
               
                 
                 <a class="post-title-link" href="/2017/03/07/页面跳转/" itemprop="url">
-                  页面跳转
+                  NJCS-页面跳转
                 </a>
               
             
@@ -703,7 +826,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
               
                 
                 <a class="post-title-link" href="/2017/03/07/页面创建/" itemprop="url">
-                  页面创建
+                  NJCS-页面创建
                 </a>
               
             
@@ -826,7 +949,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
               
                 
                 <a class="post-title-link" href="/2017/03/07/项目接入/" itemprop="url">
-                  项目接入
+                  NJCS-项目接入
                 </a>
               
             
@@ -915,7 +1038,7 @@ if (njcsVersion && njcsVersion > 0) {
 [NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];
 </pre>
 
-<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续扩展部分会有详细介绍。</p>
+<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续<a href="">扩展部分</a>会有详细介绍。</p>
 
           
         
@@ -1035,7 +1158,7 @@ if (njcsVersion && njcsVersion > 0) {
       
         
           
-            
+            <h2 id="敬请期待"><a href="#敬请期待" class="headerlink" title="敬请期待"></a>敬请期待</h2>
           
         
       
@@ -1455,129 +1578,13 @@ if (njcsVersion && njcsVersion > 0) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/24/博客成立啦/" itemprop="url">
-                  博客成立啦
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-24T18:42:49+08:00" content="2016-10-24">
-              2016-10-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂谈/" itemprop="url" rel="index">
-                    <span itemprop="name">杂谈</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/24/博客成立啦/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/博客成立啦/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>就在今天，博客成立了！<br><a href="http://www.imcoder.win" target="_blank" rel="external">imcoder</a>.<br><img src="/2016/10/24/博客成立啦/jianpan.jpg" alt="博客成立啦" title="博客成立啦"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1616,7 +1623,7 @@ if (njcsVersion && njcsVersion > 0) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -89,16 +89,16 @@
 [NJCS setExceptionHandler:^(NSDictionary *exceptions) {
 #if DEBU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目接入">
+<meta property="og:title" content="NJCS-项目接入">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/07/项目接入/index.html">
 <meta property="og:site_name" content="imCoder">
 <meta property="og:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
 
 [NJCS setExceptionHandler:^(NSDictionary *exceptions) {
 #if DEBU">
-<meta property="og:updated_time" content="2017-03-07T08:17:19.000Z">
+<meta property="og:updated_time" content="2017-03-09T02:18:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目接入">
+<meta name="twitter:title" content="NJCS-项目接入">
 <meta name="twitter:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
 
 [NJCS setExceptionHandler:^(NSDictionary *exceptions) {
@@ -126,7 +126,7 @@
   <link rel="canonical" href="http://www.imcoder.com/2017/03/07/项目接入/"/>
 
 
-  <title> 项目接入 | imCoder </title>
+  <title> NJCS-项目接入 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +274,7 @@
             
             
               
-                项目接入
+                NJCS-项目接入
               
             
           </h1>
@@ -360,7 +360,7 @@ if (njcsVersion && njcsVersion > 0) {
 [NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];
 </pre>
 
-<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续扩展部分会有详细介绍。</p>
+<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续<a href="">扩展部分</a>会有详细介绍。</p>
 
       
     </div>
@@ -404,8 +404,8 @@ if (njcsVersion && njcsVersion > 0) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/07/页面创建/" rel="prev" title="页面创建">
-                页面创建 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/07/页面创建/" rel="prev" title="NJCS-页面创建">
+                NJCS-页面创建 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -436,7 +436,7 @@ if (njcsVersion && njcsVersion > 0) {
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/03/07/项目接入/"
-           data-title="项目接入" data-url="http://www.imcoder.com/2017/03/07/项目接入/">
+           data-title="NJCS-项目接入" data-url="http://www.imcoder.com/2017/03/07/项目接入/">
       </div>
     
   </div>
@@ -481,7 +481,7 @@ if (njcsVersion && njcsVersion > 0) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
