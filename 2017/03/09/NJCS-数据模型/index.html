@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IOS,OC,Objective-C," />
 
 
 
@@ -84,15 +84,34 @@
 
 
 
-<meta name="description" content="水滴石穿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="imCoder">
-<meta property="og:url" content="http://www.imcoder.com/page/2/index.html">
+<meta name="description" content="一个对象在JS和OC之间传递的时候会有个对应的类型转换，在JSValue.h源码中有个简单的介绍：
+
+@textblock
+   Objective-C type  |   JavaScript type
+ --------------------+---------------------
+         nil         |     undefined
+        NSNull">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NJCS-数据模型">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/09/NJCS-数据模型/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="水滴石穿">
+<meta property="og:description" content="一个对象在JS和OC之间传递的时候会有个对应的类型转换，在JSValue.h源码中有个简单的介绍：
+
+@textblock
+   Objective-C type  |   JavaScript type
+ --------------------+---------------------
+         nil         |     undefined
+        NSNull">
+<meta property="og:updated_time" content="2017-03-09T15:15:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="imCoder">
-<meta name="twitter:description" content="水滴石穿">
+<meta name="twitter:title" content="NJCS-数据模型">
+<meta name="twitter:description" content="一个对象在JS和OC之间传递的时候会有个对应的类型转换，在JSValue.h源码中有个简单的介绍：
+
+@textblock
+   Objective-C type  |   JavaScript type
+ --------------------+---------------------
+         nil         |     undefined
+        NSNull">
 
 
 
@@ -113,10 +132,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/page/2/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/09/NJCS-数据模型/"/>
 
 
-  <title> imCoder </title>
+  <title> NJCS-数据模型 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -135,9 +154,7 @@
   
   
 
-  <div class="container one-collumn  
-   page-home 
- ">
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -244,9 +261,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -266,10 +283,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/25/框架中常用的宏定义/" itemprop="url">
-                  框架中常用的宏定义
-                </a>
+                NJCS-数据模型
               
             
           </h1>
@@ -281,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T14:37:54+08:00" content="2016-10-25">
-              2016-10-25
+            <time itemprop="dateCreated" datetime="2017-03-09T15:12:35+08:00" content="2017-03-09">
+              2017-03-09
             </time>
           </span>
 
@@ -311,8 +325,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/25/框架中常用的宏定义/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/框架中常用的宏定义/" itemprop="commentsCount"></span>
+                <a href="/2017/03/09/NJCS-数据模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/NJCS-数据模型/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,174 +349,209 @@
       
 
       
-        
-          <p>1:NS_ASSUME_NONNULL_BEGIN / NS_ASSUME_NONNULL_END  </p>
-<p><pre><br>NS_ASSUME_NONNULL_BEGIN<br>@Interface People:NSObject<br>@property (nonatomic, strong) NSString <em>name;<br>@property (nonatomic, strong) NSString </em>gender;<br>@end<br>NS_ASSUME_NONNULL_END<br></pre><br>以上表明属性name和gender是nonnull类型的，在调用[self setName:nil];或者[self setGender:nil]; 编译器会给出警告：Null passed to a callee that requires a non-null argument.<br>只是一个警告，编译还是可以通过的。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/25/框架中常用的宏定义/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <p>一个对象在JS和OC之间传递的时候会有个对应的类型转换，在JSValue.h源码中有个简单的介绍：</p>
+<pre>
+@textblock
+   Objective-C type  |   JavaScript type
+ --------------------+---------------------
+         nil         |     undefined
+        NSNull       |        null
+       NSString      |       string
+       NSNumber      |   number, boolean
+     NSDictionary    |   Object object
+       NSArray       |    Array object
+        NSDate       |     Date object
+       NSBlock (1)   |   Function object (1)
+          id (2)     |   Wrapper object (2)
+        Class (3)    | Constructor object (3)
+@/textblock
+</pre>
+这里重点提一下OC 的 id类型到JS环境后会是Wrapper object,在IOS7 及以下的系统中这个Wrapper object在被访问的时候会引起崩溃异常，这个坑很深，困扰了好几天才想到比较好的解决办法，将id类型封装到NSDictionary内部返回的，详细的情况在[原理部分]()会进行介绍。Native的方法在被执行的时候参数来源有两种，第一种：从OC传给JS，再从JS回传给OC，这种参数是不需要进行类型转换可以直接使用的；第二种：直接在JS生成，简单的类型如：Array、Dictionary、Data会在传递过程中自动转换，复杂的类型：如 CGRect、UIColor以及自定义的数据类型是无法自动转换的就需要手动封装。
+<a id="more"></a>
+1：现有的数据类型封装
+CGRect
+CGPoint
+CGSize
+UIColor
+UIFont
+……
+2：如何封装数据
+JS生成自定义对象都是Dictionary的实例，其中有个className字段代表到OC中想要被转换成的类型，JS的封装如下：
+<pre>
+var NJCSCGPoint_JS = {
+create:function(x, y){
+    var CGPoint = NJCSStruct_JS.create("{CGPoint=dd}");
+    CGPoint.x = x;
+    CGPoint.y = y;
+
+    return CGPoint;
+}
+}
+
+var NJCSCGSize_JS = {
+create:function(width, height){
+    var CGSize = NJCSStruct_JS.create("{CGSize=dd}");
+    CGSize.width = width;
+    CGSize.height = height;
+
+    return CGSize;
+}
+}
+
+var NJCSCGRect = {
+create:function(x, y, width, height){
+    var CGRect = NJCSStruct_JS.create("{CGRect={CGPoint=dd}{CGSize=dd}}");
+    CGRect.x = x;
+    CGRect.y = y;
+    CGRect.width = width;
+    CGRect.height = height;
+    return CGRect;
+}
+}
+</pre>
+与之对应的OC封装如下，以UIFont为例：
+模型转换协议：
+<pre>
+#import <foundation foundation.h="">
+
+@protocol NJCSModelTypeAdapterProtocol <nsobject>
+
+- (id)OCModel2JSModel:(id)ocModel;
+- (id)JSModel2OCModel:(id)jsModel;
+
+@end
+</nsobject></foundation></pre>
+
+<p>.h文件：</p>
+<pre>
+#import <foundation foundation.h="">
+#import "NJCSModelTypeAdapterProtocol.h"
+
+@interface UIFontModelAdapter : NSObject <njcsmodeltypeadapterprotocol>
+
+@end
+
+</njcsmodeltypeadapterprotocol></foundation></pre>
+
+<p>.m文件：</p>
+<pre>
+#import "UIFontModelAdapter.h"
+#import <uikit uikit.h="">
+
+@implementation UIFontModelAdapter
+
+- (id)OCModel2JSModelWith:(void *)value
+{
+    UIFont *font = (__bridge UIFont *)value;
+    UIFontDescriptor *fontDes = font.fontDescriptor;
+    NSNumber *fontSize = [fontDes objectForKey:@"NSFontSizeAttribute"];
+    NSString *fontName = [fontDes objectForKey:@"NSFontNameAttribute"];
+
+    return @{@"fontSize":fontSize, @"fontName":fontName};
+}
+
+- (id)OCModel2JSModel:(id)ocModel
+{
+    UIFont *font = (UIFont *)ocModel;
+    NSNumber *fontSize = [NSNumber numberWithFloat:[font pointSize]];
+    return fontSize;
+}
+
+- (id)JSModel2OCModel:(id)jsModel
+{
+    NSParameterAssert(jsModel);
+    float fontSize = 12.0f;
+    if ([jsModel isKindOfClass:[NSDictionary class]]) {
+        NSNumber *fontSizeNumber = [jsModel objectForKey:@"fontSize"];
+        fontSize = [fontSizeNumber floatValue];
+
+        NSString *fontName = [jsModel objectForKey:@"fontName"];
+        if(fontName && ![fontName isEqualToString:@""]){
+            return [UIFont fontWithName:fontName size:fontSize];
+        }
+    }
+    return [UIFont systemFontOfSize:fontSize];
+}
+
+@end
+
+</uikit></pre>
+
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/24/博客成立啦/" itemprop="url">
-                  博客成立啦
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-24T18:42:49+08:00" content="2016-10-24">
-              2016-10-24
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂谈/" itemprop="url" rel="index">
-                    <span itemprop="name">杂谈</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/IOS/" rel="tag">#IOS</a>
           
-
+            <a href="/tags/OC/" rel="tag">#OC</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/24/博客成立啦/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/博客成立啦/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>就在今天，博客成立了！<br><a href="http://www.imcoder.win" target="_blank" rel="external">imcoder</a>.<br><img src="/2016/10/24/博客成立啦/jianpan.jpg" alt="博客成立啦" title="博客成立啦"></p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/09/NJCS-方法调用/" rel="next" title="NJCS-方法调用">
+                <i class="fa fa-chevron-left"></i> NJCS-方法调用
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/09/NJCS-数据模型/"
+           data-title="NJCS-数据模型" data-url="http://www.imcoder.com/2017/03/09/NJCS-数据模型/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -522,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -573,6 +631,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -669,6 +738,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
