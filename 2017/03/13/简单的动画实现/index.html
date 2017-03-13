@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IOS,OC,Objective-C," />
 
 
 
@@ -84,15 +84,34 @@
 
 
 
-<meta name="description" content="水滴石穿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="imCoder">
-<meta property="og:url" content="http://www.imcoder.com/tags/其他/index.html">
+<meta name="description" content="目前动画只支持UIView的几个简单的animate，是通过扩展的方式接入的，直接上代码：1：接入代码
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _viewControllers = [NSMapTable strongToWeakObjectsMapTable];
+        [[NSNotification">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的动画实现">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/13/简单的动画实现/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="水滴石穿">
+<meta property="og:description" content="目前动画只支持UIView的几个简单的animate，是通过扩展的方式接入的，直接上代码：1：接入代码
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _viewControllers = [NSMapTable strongToWeakObjectsMapTable];
+        [[NSNotification">
+<meta property="og:updated_time" content="2017-03-13T08:13:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="imCoder">
-<meta name="twitter:description" content="水滴石穿">
+<meta name="twitter:title" content="简单的动画实现">
+<meta name="twitter:description" content="目前动画只支持UIView的几个简单的animate，是通过扩展的方式接入的，直接上代码：1：接入代码
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _viewControllers = [NSMapTable strongToWeakObjectsMapTable];
+        [[NSNotification">
 
 
 
@@ -113,10 +132,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/tags/其他/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/13/简单的动画实现/"/>
 
 
-  <title> 标签: 其他 | imCoder </title>
+  <title> 简单的动画实现 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +154,7 @@
   
   
 
-  <div class="container one-collumn   ">
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -243,53 +262,210 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        其他
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单的动画实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T15:56:31+08:00" content="2017-03-13">
+              2017-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/13/简单的动画实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/简单的动画实现/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <p>目前动画只支持UIView的几个简单的animate，是通过扩展的方式接入的，直接上代码：<br>1：接入代码</p>
+<pre>
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _viewControllers = [NSMapTable strongToWeakObjectsMapTable];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(njcsViewControllerDealloc:) name:NJCSVIEWCONTROLLER_DEALLOC object:nil];
+        _njcsJSContext = [[NJCS_JSContext alloc] init];
+        _njcsJSContext.jscontext[@"NJCSBridge_Native"] = self;
 
-      <h1 class="post-title">
+        self.macors = [[NJCSMacors alloc] init];
+        self.njcsHttp = [[NJCSHttp alloc] init];
+        self.viewAnimate = [[NJCSViewAnimate alloc] init];
+        self.modelAdapter = [[NJCSModelAdapter alloc] init];
+        self.notifyManager = [NJCSNotificationManager sharedManager];
+        self.njcsAlert = [NJCSAlert shareInstance];
+    }
+
+    return self;
+}
+</pre>
+
+<p>viewAnimate是做为必接扩展添加进去的，是用户必须实现的。<br>对外公开的几个方法如下：</p>
+<pre>
+- (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^ _Nullable)(void))animations
+{
+    [UIView animateWithDuration:duration animations:animations];
+}
+
+- (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^ _Nullable)(void))animations completion:(void (^ _Nullable)(BOOL))completion
+{
+    [UIView animateWithDuration:duration animations:animations completion:completion];
+}
+
+- (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^ _Nullable)(void))animations completion:(void (^ _Nullable)(BOOL))completion
+{
+    [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
+}
+</pre>
+
+<p>都是些很简单的实现，这里就不详细介绍了。</p>
+
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/10/24/博客成立啦/" itemprop="url">
-              
-                <span itemprop="name">博客成立啦</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-24T18:42:49+08:00"
-              content="2016-10-24" >
-          10-24
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOS/" rel="tag">#IOS</a>
+          
+            <a href="/tags/OC/" rel="tag">#OC</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/GCD的使用/" rel="next" title="GCD的使用">
+                <i class="fa fa-chevron-left"></i> GCD的使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/13/简单的动画实现/"
+           data-title="简单的动画实现" data-url="http://www.imcoder.com/2017/03/13/简单的动画实现/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -309,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -360,6 +545,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -456,6 +652,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
