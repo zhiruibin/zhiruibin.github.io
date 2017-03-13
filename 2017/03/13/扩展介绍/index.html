@@ -85,24 +85,18 @@
 
 
 <meta name="description" content="目前内置的扩展实现有：NJCSVCManagerNJCSViewAnimateNJCSNotificationManagerNJCSUserDefaultManagerNJCSModelAdapter其余的扩展都是接口层的实现，需要用户根据自己的情况具体实现,如：NJCSHttpNJCSAlertNJCSLogComponent等……
-下面以NJCSHttp为例进行扩展接入介绍：接口协议：
-
-#i">
+1:下面以NJCSHttp为例进行扩展接入介绍：接口协议：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扩展介绍">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/13/扩展介绍/index.html">
 <meta property="og:site_name" content="imCoder">
 <meta property="og:description" content="目前内置的扩展实现有：NJCSVCManagerNJCSViewAnimateNJCSNotificationManagerNJCSUserDefaultManagerNJCSModelAdapter其余的扩展都是接口层的实现，需要用户根据自己的情况具体实现,如：NJCSHttpNJCSAlertNJCSLogComponent等……
-下面以NJCSHttp为例进行扩展接入介绍：接口协议：
-
-#i">
-<meta property="og:updated_time" content="2017-03-13T11:12:29.000Z">
+1:下面以NJCSHttp为例进行扩展接入介绍：接口协议：">
+<meta property="og:updated_time" content="2017-03-13T11:20:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扩展介绍">
 <meta name="twitter:description" content="目前内置的扩展实现有：NJCSVCManagerNJCSViewAnimateNJCSNotificationManagerNJCSUserDefaultManagerNJCSModelAdapter其余的扩展都是接口层的实现，需要用户根据自己的情况具体实现,如：NJCSHttpNJCSAlertNJCSLogComponent等……
-下面以NJCSHttp为例进行扩展接入介绍：接口协议：
-
-#i">
+1:下面以NJCSHttp为例进行扩展接入介绍：接口协议：">
 
 
 
@@ -341,7 +335,7 @@
 
       
         <p>目前内置的扩展实现有：<br>NJCSVCManager<br>NJCSViewAnimate<br>NJCSNotificationManager<br>NJCSUserDefaultManager<br>NJCSModelAdapter<br>其余的扩展都是接口层的实现，需要用户根据自己的情况具体实现,如：<br>NJCSHttp<br>NJCSAlert<br>NJCSLogComponent<br>等……</p>
-<p>下面以NJCSHttp为例进行扩展接入介绍：<br>接口协议：</p>
+<p>1:下面以NJCSHttp为例进行扩展接入介绍：<br>接口协议：</p>
 <pre>
 #import <foundation foundation.h="">
 #import <javascriptcore javascriptcore.h="">
@@ -440,6 +434,47 @@ typedef void(^callbackBlock)(BOOL isSuccess, id resultData);
 
 @end
 </njcshttpprotocol></pre>
+
+<p>在接口层的GetRequestWithURLString方法和PostRequestWithURLString方法中会各自调用实现层的Get和Post方法；<br>2：实现层代码如下：</p>
+<pre>
+#import "CommonHTTPTool.h"
+#import "NJCSHttp.h"
+#import "IMHTTPClient.h"
+
+@implementation CommonHTTPTool
+
+- (void)Get:(NSString *)urlString params:(NSDictionary *)params resultBlock:(void (^)(BOOL, id))resultBlock {
+
+    IMHTTPClient *client = [[IMHTTPClient alloc] initWithURL:urlString parameters:params];
+
+    [client imHTTPRequestOperationWithHTTPMethod:@"GET" success:^(IMHTTPRequestOperation *operation, id responseObject, id userInfo) {
+
+        resultBlock(YES, responseObject);
+
+    } failure:^(IMHTTPRequestOperation *operation, NSError *error, id userInfo) {
+
+        resultBlock(NO, error);
+    }];
+}
+
+- (void)Post:(NSString *)urlString params:(NSDictionary *)params resultBlock:(void (^)(BOOL, id))resultBlock {
+
+    IMHTTPClient *client = [[IMHTTPClient alloc] initWithURL:urlString parameters:params];
+
+    [client imHTTPRequestOperationWithHTTPMethod:@"POST" success:^(IMHTTPRequestOperation *operation, id responseObject, id userInfo) {
+
+        resultBlock(YES, responseObject);
+
+    } failure:^(IMHTTPRequestOperation *operation, NSError *error, id userInfo) {
+
+        resultBlock(NO, error);
+    }];
+}
+
+@end
+</pre>
+
+<p>说明：IMHTTPClient是实现层（用户层）自己封装的网络库。</p>
 
       
     </div>
