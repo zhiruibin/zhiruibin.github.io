@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IOS,OC,Objective-C," />
 
 
 
@@ -84,16 +84,49 @@
 
 
 
-<meta name="description" content="水滴石穿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://www.imcoder.com/about/index.html">
+<meta name="description" content="闲话少说，直接上代码：
+
+- (void)dispatch_async_main:(JSValue *)function
+{
+    NSParameterAssert(function);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+
+
+异">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCD的使用">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/11/GCD的使用/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="水滴石穿">
-<meta property="og:updated_time" content="2016-11-12T00:49:52.000Z">
+<meta property="og:description" content="闲话少说，直接上代码：
+
+- (void)dispatch_async_main:(JSValue *)function
+{
+    NSParameterAssert(function);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+
+
+异">
+<meta property="og:updated_time" content="2017-03-13T05:45:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="水滴石穿">
+<meta name="twitter:title" content="GCD的使用">
+<meta name="twitter:description" content="闲话少说，直接上代码：
+
+- (void)dispatch_async_main:(JSValue *)function
+{
+    NSParameterAssert(function);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+
+
+异">
 
 
 
@@ -114,16 +147,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/about/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/11/GCD的使用/"/>
 
 
-  <title>
-  
-
-  
-    about | imCoder
-  
-</title>
+  <title> GCD的使用 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -142,7 +169,7 @@
   
   
 
-  <div class="container one-collumn   ">
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -252,9 +279,187 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                GCD的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-11T14:30:32+08:00" content="2017-03-11">
+              2017-03-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/11/GCD的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/GCD的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <p>闲话少说，直接上代码：</p>
+<pre>
+- (void)dispatch_async_main:(JSValue *)function
+{
+    NSParameterAssert(function);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+</pre>
+
+<p>异步主线程，只是将dispatch_async进行了简单的包装；</p>
+<pre>
+- (void)dispatch_async_global_queue:(JSValue *)function afterFunction:(JSValue *)afterFunction
+{
+    NSParameterAssert(function);
+    NSParameterAssert(afterFunction);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        JSValue *result = [function callWithArguments:nil];
+        [afterFunction callWithArguments:@[result]];
+    });
+}
+</pre>
+
+<p>异步全局队列，也是简单的包装，之前看过一片关于JS锁的文章，里面说不管是在哪个线程调用js代码，只要JSContext相同就都会在主线程调用，如果想实现真正的异步，需要新建js虚拟机，后续会进行测试验证；</p>
+<pre>
+- (void)dispatch_after:(NSInteger)time function:(JSValue *)function
+{
+    NSParameterAssert(time);
+    NSParameterAssert(function);
+
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+</pre>
+
+<p>同上，这里都不赘述了，关于其他GCD相关的需要的时候进行封装即可；</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IOS/" rel="tag">#IOS</a>
+          
+            <a href="/tags/OC/" rel="tag">#OC</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/09/NJCS-数据模型/" rel="next" title="NJCS-数据模型">
+                <i class="fa fa-chevron-left"></i> NJCS-数据模型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -266,6 +471,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/11/GCD的使用/"
+           data-title="GCD的使用" data-url="http://www.imcoder.com/2017/03/11/GCD的使用/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -285,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -336,6 +558,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -432,6 +665,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 

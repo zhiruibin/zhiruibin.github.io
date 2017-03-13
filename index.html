@@ -267,6 +267,164 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/11/GCD的使用/" itemprop="url">
+                  GCD的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-11T14:30:32+08:00" content="2017-03-11">
+              2017-03-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/11/GCD的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/GCD的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>闲话少说，直接上代码：</p>
+<pre>
+- (void)dispatch_async_main:(JSValue *)function
+{
+    NSParameterAssert(function);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+</pre>
+
+<p>异步主线程，只是将dispatch_async进行了简单的包装；</p>
+<pre>
+- (void)dispatch_async_global_queue:(JSValue *)function afterFunction:(JSValue *)afterFunction
+{
+    NSParameterAssert(function);
+    NSParameterAssert(afterFunction);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        JSValue *result = [function callWithArguments:nil];
+        [afterFunction callWithArguments:@[result]];
+    });
+}
+</pre>
+
+<p>异步全局队列，也是简单的包装，之前看过一片关于JS锁的文章，里面说不管是在哪个线程调用js代码，只要JSContext相同就都会在主线程调用，如果想实现真正的异步，需要新建js虚拟机，后续会进行测试验证；</p>
+<pre>
+- (void)dispatch_after:(NSInteger)time function:(JSValue *)function
+{
+    NSParameterAssert(time);
+    NSParameterAssert(function);
+
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [function callWithArguments:nil];
+    });
+}
+</pre>
+
+<p>同上，这里都不赘述了，关于其他GCD相关的需要的时候进行封装即可；</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/09/NJCS-数据模型/" itemprop="url">
                   NJCS-数据模型
                 </a>
@@ -1487,129 +1645,6 @@ if (njcsVersion && njcsVersion > 0) {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/Hexo-deploy遇到的坑/" itemprop="url">
-                  Hexo deploy遇到的坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-01T13:29:08+08:00" content="2016-11-01">
-              2016-11-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/01/Hexo-deploy遇到的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/01/Hexo-deploy遇到的坑/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这几天在更新博客的时候发现使用命令“hexo d”进行提交时失败，错误提示如下：  </p>
-<p><pre>INFO  Deploying: git<br>INFO  Clearing .deploy_git folder…<br>INFO  Copying files from public folder…<br>On branch master<br>nothing to commit, working directory clean<br>Permission denied (publickey).<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights<br>and the repository exists.<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="http://hexo.io/docs/troubleshooting.html">http://hexo.io/docs/troubleshooting.html</a><br>Error: Permission denied (publickey).<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights<br>and the repository exists.<br></pre><br>在网上找了很多方法，有git降级的，有重新生成ssh key然后将public key 添加到github上的，几乎所有的都折腾了一边，然并卵……，功夫不负有心人，最后还是搞定了，特此记录一下，以备不时之需。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/01/Hexo-deploy遇到的坑/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1655,7 +1690,7 @@ if (njcsVersion && njcsVersion > 0) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
