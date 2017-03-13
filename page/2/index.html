@@ -267,6 +267,146 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/07/项目接入/" itemprop="url">
+                  NJCS-项目接入
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T14:17:41+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/项目接入/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/项目接入/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>NJCS的接入主要有四个部分：<br>1：设置异常监听<br>2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）<br>3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）<br>4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）<br>接入示例：</p>
+<pre>
+[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
+#if DEBUG
+    NSString *exceptionDesc = [NSString stringWithFormat:@"JSException:name:%@\n message:%@\n script:%@\n line: %@ column: %@\n stack: %@\n", exceptions[@"name"], exceptions[@"message"], exceptions[@"script"], exceptions[@"line"], exceptions[@"column"], exceptions[@"stack"]];
+            NSLog(@"%@", exceptionDesc);
+#endif
+    NSException *exception = [NSException exceptionWithName:[NSString stringWithFormat:@"%@", exceptions[@"name"]] reason:[NSString stringWithFormat:@"%@", exceptions[@"message"]] userInfo:exceptions];
+    [Bugly reportException:exception];
+}];
+NSString *njcsFilesRootURL = @"";
+NSInteger njcsVersion = [CommonRemoteFilesManager targetVersion];
+if (njcsVersion && njcsVersion > 0) {
+    njcsFilesRootURL = [CommonRemoteFilesManager targeFilesPath:[NSString stringWithFormat:@"%ld", njcsVersion]];
+}
+[NJCS sync:njcsFilesRootURL];
+[NJCS registerModelAdapterForType:[JobAuthModelItemAdapter class] type:@"JobAuthModelItemAdapter"];
+[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];
+</pre>
+
+<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续<a href="">扩展部分</a>会有详细介绍。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/07/NJCS系列-NJCS实现原理/" itemprop="url">
                   NJCS系列--NJCS实现原理
                 </a>
@@ -938,7 +1078,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
