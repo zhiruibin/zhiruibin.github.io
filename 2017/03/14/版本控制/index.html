@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
+<meta name="description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NJCS-方法调用">
-<meta property="og:url" content="http://www.imcoder.com/2017/03/09/NJCS-方法调用/index.html">
+<meta property="og:title" content="版本控制">
+<meta property="og:url" content="http://www.imcoder.com/2017/03/14/版本控制/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
-<meta property="og:updated_time" content="2017-03-09T06:56:07.000Z">
+<meta property="og:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
+<meta property="og:updated_time" content="2017-03-14T03:49:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NJCS-方法调用">
-<meta name="twitter:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
+<meta name="twitter:title" content="版本控制">
+<meta name="twitter:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
 
 
 
@@ -117,10 +114,10 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/2017/03/09/NJCS-方法调用/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/03/14/版本控制/"/>
 
 
-  <title> NJCS-方法调用 | imCoder </title>
+  <title> 版本控制 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +265,7 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
             
             
               
-                NJCS-方法调用
+                版本控制
               
             
           </h1>
@@ -280,8 +277,8 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-09T14:24:29+08:00" content="2017-03-09">
-              2017-03-09
+            <time itemprop="dateCreated" datetime="2017-03-14T11:32:36+08:00" content="2017-03-14">
+              2017-03-14
             </time>
           </span>
 
@@ -310,8 +307,8 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/09/NJCS-方法调用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/NJCS-方法调用/" itemprop="commentsCount"></span>
+                <a href="/2017/03/14/版本控制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/版本控制/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,14 +331,7 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
       
 
       
-        <p>NJCS内方法的调用有两种方式，这里分别介绍一下：<br>1：链式调用<br>代码示例：</p>
-<p><pre><br>var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类<br>var tableView = UITableView.alloc().init();//初始化UITableView实例<br>this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView<br>tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors[“mainScreenWidth”], NJCSMacors[“screenHeight”] - 50));//设置tableView的frame<br>tableView.setBackgroundColor(NJCSUIColor_JS.create(“#999999:0”));//设置tableView的背景颜色<br></pre><br>UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在<a href="">原理文章</a>中介绍。<br>2：簇调用<a id="more"></a><br>代码示例：</p>
-<p><pre><br>var cmds = [];<br>cmds.push(componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]));<br>cmds.push(componentCMD_JS.create(component, “info”, “setText:”, [data.info]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setText:”, [data.tip]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFFFFF”, 0)]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#BBBBBB”)]));<br>var width = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.tip, 11, 13);<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextAlignment:”, [“1”]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setFrame:”, [NJCSCGRect.create(NJCSMacors[“screenWidth”] - width - 30, (50 - 15) / 2, width + 6, 15)]));<br>cmds.push(componentCMD_JS.create(component, “nextIcon”, “setImage:”, [“job_coin_pusharrow”]));</pre></p>
-<p>var infoWidth = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.info, 15, 15);<br>cmds.push(componentCMD_JS.create(component, “info”, “setFrame:”, [NJCSCGRect.create(45, 10, infoWidth, 30)]));<br>cmds.push(componentCMD_JS.create(component, “markView”, “setFrame:”, [NJCSCGRect.create(45 + infoWidth + 5, 22, 6, 6)]));</p>
-<p>if(data.type == “JobQuickPublishOptionViewIdenfitier”){<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#FF704F”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFEAE5”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setCornerRadius:”, [3]));<br>}</p>
-<p>if(data.type == “JobMyCoinViewIdenfitier”){<br>  var IMPrivateDatabaseManageObject = getNativeClassWithClassName([“IMPrivateDatabaseManageObject”]);<br>  var imPrivateDBmanager = IMPrivateDatabaseManageObject.alloc().init();<br>  var clickHot = imPrivateDBmanager.keyValueProxy().stringForKey(“JobMyCoinViewIdenfitierHotTip”);<br>  if(clickHot &amp;&amp; clickHot == “click”){<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [true]));<br>    }else{<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [false]));<br>  }<br>}</p>
-<p>bridgeJS.sendCMDTOComponents(cmds);<br><br>2-1：使用componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]);创建一个cmd<br>源码如下：</p>
-<p><pre><br>var componentCMD_JS = {<br>  create:function(component, childInstanceName, methodName, parameters){<br>    var componentCMD = {};<br>    componentCMD.component = component;<br>    componentCMD.childInstanceName = childInstanceName;<br>    componentCMD.methodName = methodName;<br>    componentCMD.parameters = parameters;<br>    return componentCMD;<br>  }<br>}<br></pre><br>  参数介绍：<br>  component：被操作的对象，这个对象既可以是Native返回的亦可以是JS封装后的实例<br>  childInstanceName:component的子组件，如果为“”则被操作对象既为component本身<br>  methodName：方法的名字<br>  parameters：参数<br>2-2：将生成的cmd push进数组<br>2-3：通过bridgeJS.sendCMDTOComponents(cmds);将cmd数组发送给Native执行，不管数组内有多少个cmd，Native和JS的交互只有一次<br>NJCSUITableViewCell即使以这种方式调用设置各种属性的</p>
+        <p>NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：<br>1：app在启动后会拉取一个版本配置文件，里面包含了三个字段<br>  version：js文件版本号<br>  url：js文件地址<br>  controllers:需要被关闭的vc名字如:[“MineViewController”, “setViewController”]<br>  读取配置文件版本号和本地的js版本做对比，如果不相同则从url处拉取最新js zip（如：3.zip）包，并解压到指定文件夹下，解压缩成功后更新本地version字段<br>2：下次启动时读取最新版本的js文件，并将旧版本文件删除</p>
 
       
     </div>
@@ -377,17 +367,13 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/08/JS类的声明/" rel="next" title="NJCS-JS类的声明">
-                <i class="fa fa-chevron-left"></i> NJCS-JS类的声明
+              <a href="/2017/03/13/扩展介绍/" rel="next" title="扩展介绍">
+                <i class="fa fa-chevron-left"></i> 扩展介绍
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/09/NJCS-数据模型/" rel="prev" title="NJCS-数据模型">
-                NJCS-数据模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -416,8 +402,8 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/09/NJCS-方法调用/"
-           data-title="NJCS-方法调用" data-url="http://www.imcoder.com/2017/03/09/NJCS-方法调用/">
+      <div class="ds-thread" data-thread-key="2017/03/14/版本控制/"
+           data-title="版本控制" data-url="http://www.imcoder.com/2017/03/14/版本控制/">
       </div>
     
   </div>

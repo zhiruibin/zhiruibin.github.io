@@ -267,6 +267,126 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/14/版本控制/" itemprop="url">
+                  版本控制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T11:32:36+08:00" content="2017-03-14">
+              2017-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/14/版本控制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/版本控制/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：<br>1：app在启动后会拉取一个版本配置文件，里面包含了三个字段<br>  version：js文件版本号<br>  url：js文件地址<br>  controllers:需要被关闭的vc名字如:[“MineViewController”, “setViewController”]<br>  读取配置文件版本号和本地的js版本做对比，如果不相同则从url处拉取最新js zip（如：3.zip）包，并解压到指定文件夹下，解压缩成功后更新本地version字段<br>2：下次启动时读取最新版本的js文件，并将旧版本文件删除</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/13/扩展介绍/" itemprop="url">
                   扩展介绍
                 </a>
@@ -1601,129 +1721,6 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/页面创建/" itemprop="url">
-                  NJCS-页面创建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T15:29:35+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/页面创建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/页面创建/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ViewController创建示例：<br>1:Native创建NJCSViewController界面</p>
-<p><pre><br>UIViewController *targetViewController = [NJCS creatViewControllerWithSessionName:@”NJCSMineViewController” jsFileName:@”NJCSMineViewController” initData:nil];<br></pre><br>使用NJCS类方法：<br>+ (NJCSBaseViewController <em>)creatViewControllerWithSessionName:(NSString </em>)sessionName jsFileName:(NSString <em>)jsFileName initData:(NSString </em>)initData;<br>参数介绍：<br>sessionName：viewController实例名称，须全局唯一<br>jsFileName：与实例名为sessionName的viewController对应的js文件名称<br>initData：viewController初始化时所需数据，如从上层界面跳转到当前界面时带过来的，或者接口请求完成后得到数据然后跳转界面时的数据<br>2：JS创建NJCSViewController界面</p>
-<p><pre><br>NJCSVCManager.pushTargetViewControllerDataAnimated(“targetViewController”, initData, true/false);<br></pre><br>js在控制viewCongroller不需要生成ViewController实例，只需通过NJCSVCManager的<br>- (void)pushTargetViewController:(NSString *)jsFile data:(id)data animated:(BOOL)flag<br>方法即可，Native会根据相应的参数创建与之对应的viewController，参数介绍：<br>jsFile:与ViewController对应的js文件名称<br>data：初始化所需数据<br>animated：是否有跳转动画</p>
-<p>关于ViewController控制相关在【页面跳转】会有详细介绍。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1769,7 +1766,7 @@ tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableVi
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
