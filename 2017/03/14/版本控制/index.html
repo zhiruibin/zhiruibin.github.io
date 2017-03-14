@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
+<meta name="description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化时会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="版本控制">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/14/版本控制/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
-<meta property="og:updated_time" content="2017-03-14T03:49:52.000Z">
+<meta property="og:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化时会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
+<meta property="og:updated_time" content="2017-03-14T03:54:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="版本控制">
-<meta name="twitter:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
+<meta name="twitter:description" content="NJCS在接入的时候需要传入js所在的文件路径，初始化时会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：1：app在启动后会拉取一个版本配置文件，里面包含了三个字段  version：js文件版本号  url：js文件地址  controllers:需要被关闭的vc名字如:[“MineV">
 
 
 
@@ -331,7 +331,7 @@
       
 
       
-        <p>NJCS在接入的时候需要传入js所在的文件路径，初始化是会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：<br>1：app在启动后会拉取一个版本配置文件，里面包含了三个字段<br>  version：js文件版本号<br>  url：js文件地址<br>  controllers:需要被关闭的vc名字如:[“MineViewController”, “setViewController”]<br>  读取配置文件版本号和本地的js版本做对比，如果不相同则从url处拉取最新js zip（如：3.zip）包，并解压到指定文件夹下，解压缩成功后更新本地version字段<br>2：下次启动时读取最新版本的js文件，并将旧版本文件删除</p>
+        <p>NJCS在接入的时候需要传入js所在的文件路径，初始化时会去相应的路径读取文件，如果文件不存在则会去NSBundle内读取内置文件，所以如果想更新JS文件只需要将最新的文件放入接入时指定的路径即可，目前我们的做法是：<br>1：app在启动后会拉取一个版本配置文件，里面包含了三个字段<br>  version：js文件版本号<br>  url：js文件地址<br>  controllers:需要被关闭的vc名字如:[“MineViewController”, “setViewController”]<br>  读取配置文件版本号和本地的js版本做对比，如果不相同则从url处拉取最新js zip（如：3.zip）包，并解压到指定文件夹下，解压缩成功后更新本地version字段<br>2：下次启动时读取最新版本的js文件，并将旧版本文件删除</p>
 
       
     </div>
