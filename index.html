@@ -1254,7 +1254,15 @@ nativeBridge.postNotificationName("NOTIFICATIONNAME", null, null);//发起通知
       
         
           <p>NJCS内方法的调用有两种方式，这里分别介绍一下：<br>1：链式调用<br>代码示例：</p>
-<p><pre><br>var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类<br>var tableView = UITableView.alloc().init();//初始化UITableView实例<br>this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView<br>tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors[“mainScreenWidth”], NJCSMacors[“screenHeight”] - 50));//设置tableView的frame<br>tableView.setBackgroundColor(NJCSUIColor_JS.create(“#999999:0”));//设置tableView的背景颜色<br></pre><br>UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在<a href="">原理文章</a>中介绍。<br>2：簇调用
+<pre>
+var UITableView = getNativeClassWithClassName("UITableView");//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));//设置tableView的frame
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableView的背景颜色
+</pre>
+UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在[原理文章]()中介绍。
+2：簇调用
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/09/NJCS-方法调用/#more" rel="contents">
               阅读全文 &raquo;

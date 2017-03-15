@@ -85,18 +85,27 @@
 
 
 <meta name="description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
+
+var UITableView = getNativeClassWithClassName(&quot;UITableView&quot;);//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NJCS-方法调用">
 <meta property="og:url" content="http://www.imcoder.com/2017/03/09/NJCS-方法调用/index.html">
 <meta property="og:site_name" content="imCoder">
 <meta property="og:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
-<meta property="og:updated_time" content="2017-03-09T06:56:07.000Z">
+
+var UITableView = getNativeClassWithClassName(&quot;UITableView&quot;);//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSu">
+<meta property="og:updated_time" content="2017-03-15T09:15:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NJCS-方法调用">
 <meta name="twitter:description" content="NJCS内方法的调用有两种方式，这里分别介绍一下：1：链式调用代码示例：
-var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类var tableView = UITableView.alloc().init();//初始化UITableView实例this.view().addSubVi">
+
+var UITableView = getNativeClassWithClassName(&quot;UITableView&quot;);//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSu">
 
 
 
@@ -335,13 +344,63 @@ var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符�
 
       
         <p>NJCS内方法的调用有两种方式，这里分别介绍一下：<br>1：链式调用<br>代码示例：</p>
-<p><pre><br>var UITableView = getNativeClassWithClassName(“UITableView”);//根据字符串获取UITableView类<br>var tableView = UITableView.alloc().init();//初始化UITableView实例<br>this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView<br>tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors[“mainScreenWidth”], NJCSMacors[“screenHeight”] - 50));//设置tableView的frame<br>tableView.setBackgroundColor(NJCSUIColor_JS.create(“#999999:0”));//设置tableView的背景颜色<br></pre><br>UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在<a href="">原理文章</a>中介绍。<br>2：簇调用<a id="more"></a><br>代码示例：</p>
-<p><pre><br>var cmds = [];<br>cmds.push(componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]));<br>cmds.push(componentCMD_JS.create(component, “info”, “setText:”, [data.info]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setText:”, [data.tip]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFFFFF”, 0)]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#BBBBBB”)]));<br>var width = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.tip, 11, 13);<br>cmds.push(componentCMD_JS.create(component, “tip”, “setTextAlignment:”, [“1”]));<br>cmds.push(componentCMD_JS.create(component, “tip”, “setFrame:”, [NJCSCGRect.create(NJCSMacors[“screenWidth”] - width - 30, (50 - 15) / 2, width + 6, 15)]));<br>cmds.push(componentCMD_JS.create(component, “nextIcon”, “setImage:”, [“job_coin_pusharrow”]));</pre></p>
-<p>var infoWidth = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.info, 15, 15);<br>cmds.push(componentCMD_JS.create(component, “info”, “setFrame:”, [NJCSCGRect.create(45, 10, infoWidth, 30)]));<br>cmds.push(componentCMD_JS.create(component, “markView”, “setFrame:”, [NJCSCGRect.create(45 + infoWidth + 5, 22, 6, 6)]));</p>
-<p>if(data.type == “JobQuickPublishOptionViewIdenfitier”){<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setTextColor:”, [NJCSUIColor_JS.create(“#FF704F”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setBackgroundColor:”, [NJCSUIColor_JS.create(“#FFEAE5”)]));<br>  cmds.push(componentCMD_JS.create(component, “tip”, “setCornerRadius:”, [3]));<br>}</p>
-<p>if(data.type == “JobMyCoinViewIdenfitier”){<br>  var IMPrivateDatabaseManageObject = getNativeClassWithClassName([“IMPrivateDatabaseManageObject”]);<br>  var imPrivateDBmanager = IMPrivateDatabaseManageObject.alloc().init();<br>  var clickHot = imPrivateDBmanager.keyValueProxy().stringForKey(“JobMyCoinViewIdenfitierHotTip”);<br>  if(clickHot &amp;&amp; clickHot == “click”){<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [true]));<br>    }else{<br>      cmds.push(componentCMD_JS.create(component, “markView”, “setHidden:”, [false]));<br>  }<br>}</p>
-<p>bridgeJS.sendCMDTOComponents(cmds);<br><br>2-1：使用componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]);创建一个cmd<br>源码如下：</p>
-<p><pre><br>var componentCMD_JS = {<br>  create:function(component, childInstanceName, methodName, parameters){<br>    var componentCMD = {};<br>    componentCMD.component = component;<br>    componentCMD.childInstanceName = childInstanceName;<br>    componentCMD.methodName = methodName;<br>    componentCMD.parameters = parameters;<br>    return componentCMD;<br>  }<br>}<br></pre><br>  参数介绍：<br>  component：被操作的对象，这个对象既可以是Native返回的亦可以是JS封装后的实例<br>  childInstanceName:component的子组件，如果为“”则被操作对象既为component本身<br>  methodName：方法的名字<br>  parameters：参数<br>2-2：将生成的cmd push进数组<br>2-3：通过bridgeJS.sendCMDTOComponents(cmds);将cmd数组发送给Native执行，不管数组内有多少个cmd，Native和JS的交互只有一次<br>NJCSUITableViewCell即使以这种方式调用设置各种属性的</p>
+<pre>
+var UITableView = getNativeClassWithClassName("UITableView");//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));//设置tableView的frame
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableView的背景颜色
+</pre>
+UITableView在执行alloc方法后会返回一个对象，然后在执行该对象的init方法，具体的实现会在[原理文章]()中介绍。
+2：簇调用<a id="more"></a>
+代码示例：
+<pre>
+var cmds = [];
+cmds.push(componentCMD_JS.create(component, "icon", "setImage:", [data.icon]));
+cmds.push(componentCMD_JS.create(component, "info", "setText:", [data.info]));
+cmds.push(componentCMD_JS.create(component, "tip", "setText:", [data.tip]));
+cmds.push(componentCMD_JS.create(component, "tip", "setBackgroundColor:", [NJCSUIColor_JS.create("#FFFFFF", 0)]));
+cmds.push(componentCMD_JS.create(component, "tip", "setTextColor:", [NJCSUIColor_JS.create("#BBBBBB")]));
+var width = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.tip, 11, 13);
+cmds.push(componentCMD_JS.create(component, "tip", "setTextAlignment:", ["1"]));
+cmds.push(componentCMD_JS.create(component, "tip", "setFrame:", [NJCSCGRect.create(NJCSMacors["screenWidth"] - width - 30, (50 - 15) / 2, width + 6, 15)]));
+cmds.push(componentCMD_JS.create(component, "nextIcon", "setImage:", ["job_coin_pusharrow"]));
+var infoWidth = NJCSStringUtils.execWidthWithStringFontSizeHeight(data.info, 15, 15);
+cmds.push(componentCMD_JS.create(component, "info", "setFrame:", [NJCSCGRect.create(45, 10, infoWidth, 30)]));
+cmds.push(componentCMD_JS.create(component, "markView", "setFrame:", [NJCSCGRect.create(45 + infoWidth + 5, 22, 6, 6)]));
+if(data.type == "JobQuickPublishOptionViewIdenfitier"){
+  cmds.push(componentCMD_JS.create(component, "tip", "setTextColor:", [NJCSUIColor_JS.create("#FF704F")]));
+  cmds.push(componentCMD_JS.create(component, "tip", "setBackgroundColor:", [NJCSUIColor_JS.create("#FFEAE5")]));
+  cmds.push(componentCMD_JS.create(component, "tip", "setCornerRadius:", [3]));
+}
+if(data.type == "JobMyCoinViewIdenfitier"){
+  var IMPrivateDatabaseManageObject = getNativeClassWithClassName(["IMPrivateDatabaseManageObject"]);
+  var imPrivateDBmanager = IMPrivateDatabaseManageObject.alloc().init();
+  var clickHot = imPrivateDBmanager.keyValueProxy().stringForKey("JobMyCoinViewIdenfitierHotTip");
+  if(clickHot && clickHot == "click"){
+      cmds.push(componentCMD_JS.create(component, "markView", "setHidden:", [true]));
+    }else{
+      cmds.push(componentCMD_JS.create(component, "markView", "setHidden:", [false]));
+  }
+}
+bridgeJS.sendCMDTOComponents(cmds);
+</pre>
+
+<p>2-1：使用componentCMD_JS.create(component, “icon”, “setImage:”, [data.icon]);创建一个cmd<br>源码如下：</p>
+<pre>
+var componentCMD_JS = {
+  create:function(component, childInstanceName, methodName, parameters){
+    var componentCMD = {};
+    componentCMD.component = component;
+    componentCMD.childInstanceName = childInstanceName;
+    componentCMD.methodName = methodName;
+    componentCMD.parameters = parameters;
+    return componentCMD;
+  }
+}
+</pre>
+
+<p>  参数介绍：<br>  component：被操作的对象，这个对象既可以是Native返回的亦可以是JS封装后的实例<br>  childInstanceName:component的子组件，如果为“”则被操作对象既为component本身<br>  methodName：方法的名字<br>  parameters：参数<br>2-2：将生成的cmd push进数组<br>2-3：通过bridgeJS.sendCMDTOComponents(cmds);将cmd数组发送给Native执行，不管数组内有多少个cmd，Native和JS的交互只有一次<br>NJCSUITableViewCell即使以这种方式调用设置各种属性的</p>
 
       
     </div>
