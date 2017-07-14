@@ -267,6 +267,297 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/08/使用封装组件/" itemprop="url">
+                  NJCS-使用封装组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-08T20:26:02+08:00" content="2017-03-08">
+              2017-03-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/08/使用封装组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/使用封装组件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>1：现有组件简单介绍<br>目前已封装的组件有：<br>NJCSUIView<br>NJCSUILabel<br>NJCSUIIconLabel<br>NJCSUITextField<br>NJCSUIButton<br>NJCSUITableView<br>NJCSUITableViewCell<br>……</p>
+<p>对于已封装组件的使用有两种情况，使用方法也是不同的，下面会逐一介绍：<br>1-1：有与原生封装组件对应的JS组件</p>
+<pre>
+defineClass("NJCSUILabel: NJCSUIView", {
+});
+defineClass("NJCSUIButton: NJCSUIView", {
+});
+defineClass("NJCSUIIconLabel: NJCSUIView", {
+});
+defineClass("NJCSUIImageView: NJCSUIView", {
+});
+defineClass("NJCSUIWebView: NJCSUIView", {
+});
+defineClass("NJCSUITableView: NJCSUIView", {
+});
+defineClass("NJCSUITextField: NJCSUIView", {          
+});
+defineClass("NJCSUISubView: NJCSUIView", {}, {
+    create:function(targetViewClass, instanceName, props){
+        var instance = new this();
+        instance.className = this.className;
+        instance.instanceName = instanceName;
+        instance.targetViewClass = targetViewClass;
+        return instance;
+    }
+});
+</pre>
+
+<p>示例代码：</p>
+<pre>
+var tableView = NJCSUITableView.create("tableView");//创建实例
+this.addElement(tableView);//将示例添加到ViewController中的view内，addElement在被调用的时候才会在Native中创建一个与之对应的Native对象实例，所以只有调用addElement之后，才能调用该实例的方法，否则会因找不到对象而产生异常
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));
+</pre>
+1-2：只有Native对象而没有与之对应的js对象
+示例代码：
+<pre>
+var UITableView = getNativeClassWithClassName("UITableView");//根据字符串获取UITableView类
+var tableView = UITableView.alloc().init();//初始化UITableView实例
+this.view().addSubView(tableView);//获取当前viewController的view 并添加tableView
+tableView.setFrame(NJCSCGRect.create(0, 0, NJCSMacors["mainScreenWidth"], NJCSMacors["screenHeight"] - 50));//设置tableView的frame
+tableView.setBackgroundColor(NJCSUIColor_JS.create("#999999:0"));//设置tableView的背景颜色
+</pre>
+看到这里可能会有人问，既然不封装就能直接使用干嘛要封装一层的，目的何在？
+的确所有的组件只要Native内存在的，在js内是可以直接使用的，之所以要封装一层目的是为了在频繁操作某个对象的属性时（如：频繁设置UILabel实例的frame
+/text/backgroundColer……），减少JS和Native的通信次数，这里先简单提一下，后续在介绍“簇调用”时详细介绍。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/08/使用封装组件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/07/页面跳转/" itemprop="url">
+                  NJCS-页面跳转
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T17:33:55+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/页面跳转/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/页面跳转/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>代码示例：</p>
+<p><pre><br>NJCSVCManager.pushViewControllerDataAnimated(“ZCMCreateDetailCompanyViewController”, null, true);<br>NJCSVCManager.pushViewControllerDataAnimated(“AuthListViewController”, null, true);<br>[[NJCSVCManager shareInstance] pushTargetViewController:@”exampJSFile” data:nil animated:YES];<br></pre><br>关于NJCS的页面跳转是有NJCSVCManager控制的主要有以下几个方法，下面会一一进行介绍：<br>1:- (void)pushTargetViewController:(NSString <em>)jsFile data:(id)data animated:(BOOL)flag;<br>使用情况：跳转到js控制的viewController<br>调用环境：Native JS<br>参数说明：<br>jsFile：与viewController对应的js文件名称<br>data：viewController初始化时所需数据<br>animated：是否显示跳转动画<br>2:- (void)pushViewController:(NSString </em>)className data:(id)data animated:(BOOL)flag;<br>使用情况：跳转到Native的ViewController<br>调用环境：Native JS<br>参数说明：<br>className：Native对应的类名字<br>data：初始化所需数据<br>animated：是否显示跳转动画<br>3:- (void)popViewControllerAnimated:(BOOL)flag;<br>使用情况：弹出当前ViewController<br>使用环境：Native  JS<br>参数说明：<br>flag：是否显示跳转动画<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/07/页面跳转/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/07/页面创建/" itemprop="url">
                   NJCS-页面创建
                 </a>
@@ -1201,7 +1492,7 @@ if (njcsVersion && njcsVersion > 0) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1218,7 +1509,7 @@ if (njcsVersion && njcsVersion > 0) {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="IOS,OC,Objective-C," />
+  <meta name="keywords" content="其它," />
 
 
 
@@ -84,25 +84,18 @@
 
 
 
-<meta name="description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
-
-[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
-#if DEBU">
+<meta name="description" content="HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据1:客户端发起HTTPS请求这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。2:服务端的配置采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NJCS-项目接入">
-<meta property="og:url" content="http://www.imcoder.com/2017/03/07/项目接入/index.html">
+<meta property="og:title" content="https简要介绍">
+<meta property="og:url" content="http://www.imcoder.com/2017/04/10/https简要介绍/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
-
-[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
-#if DEBU">
-<meta property="og:updated_time" content="2017-03-09T02:18:28.000Z">
+<meta property="og:description" content="HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据1:客户端发起HTTPS请求这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。2:服务端的配置采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以">
+<meta property="og:image" content="http://www.imcoder.com/2017/04/10/https简要介绍/https_img.png">
+<meta property="og:updated_time" content="2017-07-14T10:33:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NJCS-项目接入">
-<meta name="twitter:description" content="NJCS的接入主要有四个部分：1：设置异常监听2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）接入示例：
-
-[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
-#if DEBU">
+<meta name="twitter:title" content="https简要介绍">
+<meta name="twitter:description" content="HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据1:客户端发起HTTPS请求这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。2:服务端的配置采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以">
+<meta name="twitter:image" content="http://www.imcoder.com/2017/04/10/https简要介绍/https_img.png">
 
 
 
@@ -123,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/2017/03/07/项目接入/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/04/10/https简要介绍/"/>
 
 
-  <title> NJCS-项目接入 | imCoder </title>
+  <title> https简要介绍 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +267,7 @@
             
             
               
-                NJCS-项目接入
+                https简要介绍
               
             
           </h1>
@@ -286,8 +279,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T14:17:41+08:00" content="2017-03-07">
-              2017-03-07
+            <time itemprop="dateCreated" datetime="2017-04-10T19:45:08+08:00" content="2017-04-10">
+              2017-04-10
             </time>
           </span>
 
@@ -316,8 +309,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/07/项目接入/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/项目接入/" itemprop="commentsCount"></span>
+                <a href="/2017/04/10/https简要介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/https简要介绍/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,27 +333,8 @@
       
 
       
-        <p>NJCS的接入主要有四个部分：<br>1：设置异常监听<br>2：设置JS脚本所在目录（如果不设置将会从Bundle内读取）<br>3：注入特殊数据类型解析（主要使用于JS在使用原有Native数据时）<br>4：添加所需扩展（如：网络请求扩展、日志上报扩展、弹窗系统扩展、数据库操作扩展）<br>接入示例：</p>
-<pre>
-[NJCS setExceptionHandler:^(NSDictionary *exceptions) {
-#if DEBUG
-    NSString *exceptionDesc = [NSString stringWithFormat:@"JSException:name:%@\n message:%@\n script:%@\n line: %@ column: %@\n stack: %@\n", exceptions[@"name"], exceptions[@"message"], exceptions[@"script"], exceptions[@"line"], exceptions[@"column"], exceptions[@"stack"]];
-            NSLog(@"%@", exceptionDesc);
-#endif
-    NSException *exception = [NSException exceptionWithName:[NSString stringWithFormat:@"%@", exceptions[@"name"]] reason:[NSString stringWithFormat:@"%@", exceptions[@"message"]] userInfo:exceptions];
-    [Bugly reportException:exception];
-}];
-NSString *njcsFilesRootURL = @"";
-NSInteger njcsVersion = [CommonRemoteFilesManager targetVersion];
-if (njcsVersion && njcsVersion > 0) {
-    njcsFilesRootURL = [CommonRemoteFilesManager targeFilesPath:[NSString stringWithFormat:@"%ld", njcsVersion]];
-}
-[NJCS sync:njcsFilesRootURL];
-[NJCS registerModelAdapterForType:[JobAuthModelItemAdapter class] type:@"JobAuthModelItemAdapter"];
-[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];
-</pre>
-
-<p>1、[NJCS setExceptionHandler:^(NSDictionary *exceptions) {}；设置异常监听，要放在初始化之前，否则初始化时产生的异常就无法监听。<br>  异常大多数需要上报的字段：<br>  exceptions[@”name”]：异常名称<br>  exceptions[@”message”]：异常信息<br>  exceptions[@”script”]：产生异常的脚本<br>  exceptions[@”line”]：异常脚本所在行数<br>  exceptions[@”column”]：异常脚本所在列数<br>  exceptions[@”stack”]：异常调用堆栈<br>2、[NJCS sync:njcsFilesRootURL]; 设置JS文件所在目录，该目录找不到文件时会从Bundle内读取<br>3、[NJCS registerModelAdapterForType:[JobAuthModelItemAda；注入某种数据类型解析<br>4、[NJCS addHttpInterface:[[CommonHTTPTool alloc] init]];添加网络请求扩展，不同的项目可能会有不同的网络请求库，NJCS只是提供了网络请求所需接口，项目在使用时只需按照要求实现接口并在添加进去即可，关于网络请求接口后续<a href="">扩展部分</a>会有详细介绍。</p>
+        <img src="/2017/04/10/https简要介绍/https_img.png" alt="https请求过程" title="https请求过程">
+<p>HTTPS其实是有两部分组成：HTTP + SSL / TLS，<br>也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据<br>1:客户端发起HTTPS请求<br>这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。<br>2:服务端的配置<br>采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。<br>3:传送证书<br>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。<br>4:客户端解析证书<br>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。<br>5:传送加密信息<br>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。<br>6:服务段解密信息<br>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。<br>7:传输加密后的信息<br>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原<br>8:客户端解密信息<br>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
 
       
     </div>
@@ -383,11 +357,7 @@ if (njcsVersion && njcsVersion > 0) {
       
         <div class="post-tags">
           
-            <a href="/tags/IOS/" rel="tag">#IOS</a>
-          
-            <a href="/tags/OC/" rel="tag">#OC</a>
-          
-            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+            <a href="/tags/其它/" rel="tag">#其它</a>
           
         </div>
       
@@ -396,16 +366,16 @@ if (njcsVersion && njcsVersion > 0) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/07/NJCS系列-NJCS实现原理/" rel="next" title="NJCS系列--NJCS实现原理">
-                <i class="fa fa-chevron-left"></i> NJCS系列--NJCS实现原理
+              <a href="/2017/03/14/版本控制/" rel="next" title="版本控制">
+                <i class="fa fa-chevron-left"></i> 版本控制
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/07/页面创建/" rel="prev" title="NJCS-页面创建">
-                NJCS-页面创建 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/13/IOS视图控制器之间的关系/" rel="prev" title="IOS视图控制器之间的关系">
+                IOS视图控制器之间的关系 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,8 +405,8 @@ if (njcsVersion && njcsVersion > 0) {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/07/项目接入/"
-           data-title="NJCS-项目接入" data-url="http://www.imcoder.com/2017/03/07/项目接入/">
+      <div class="ds-thread" data-thread-key="2017/04/10/https简要介绍/"
+           data-title="https简要介绍" data-url="http://www.imcoder.com/2017/04/10/https简要介绍/">
       </div>
     
   </div>
