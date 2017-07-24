@@ -267,6 +267,128 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/24/NJCS设计理论篇/" itemprop="url">
+                  NJCS设计理论篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-24T19:23:25+08:00" content="2017-07-24">
+              2017-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/24/NJCS设计理论篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/24/NJCS设计理论篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>闲言稍絮<br>什么是动态功能部署、动态功能部署有什么优缺点、市面上都有哪些动态功能部署的方案、这些方案横向对比优点缺点各是什么等等，类似的问题及答案就不赘述了，某度一搜相关的文章有好几十页，有兴趣的可以去看看，下面直接讨论我们的实现方式。<br>NJCS的整体介绍<br><img src="/2017/07/24/NJCS设计理论篇/zhengtisheji.png" alt="整体设计" title="整体设计"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/24/NJCS设计理论篇/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/13/IOS视图控制器之间的关系/" itemprop="url">
                   IOS视图控制器之间的关系
                 </a>
@@ -336,12 +458,12 @@
 
       
         
-          
-            <p>[xxx.navigationController pushViewController:yyy animated:YES/NO];<br>[xxx.navigationController popViewControllerAnimated:YES?NO];<br>以及<br>[xxx presentViewController:yyy animated:YES/NO completion:nil];<br>[xxx dismissViewControllerAnimated:YES/NO completion:nil];<br>以上几个关于视图转换的方法我们在开发过程中经常用到，但是在这些方法在执行完成之后各个viewController之间是以什么样的关系存在的，没有具体的想过，之前也看过一篇关于相关内容的文章，时间久了再想看时文章已经找不到了，所以这次打算写代码测一下结果，并总结记录下来:<br>UIViewController分为两种类型：<br>viewController容器，如：UITabBarController、UINavigationController等<br>viewcontroller：UIViewController及其自定义的子类<br>viewController之间存在两种关系<br>1：包含关系，比如viewControllerA的parentViewCONtroller是viewControllerB<br>2：presented与presenting关系，如viewControllerA调用presentViewController:animated:completion:方法后viewControllerB被展示出来，这时viewControllerA的presentedViewController是viewControllerB，而viewControllerB的presentingViewController是viewControllerA<br>我们先说一下包含关系代码如下：</p>
-<p><pre><br>-(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions {<br>    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];<br>    UITabBarController <em>tabBarController = [[UITabBarController alloc] init];<br>    UINavigationController </em>navigationController = [[UINavigationController alloc] init];<br>    ViewController *viewController = [[ViewController alloc] init];<br>    [navigationController addChildViewController:viewController];<br>    [tabBarController addChildViewController:navigationController];<br>    self.window.rootViewController = tabBarController;<br>    [self.window makeKeyAndVisible];<br>    return YES;<br>}<br></pre><br>结果就不详细解释了关系图如下:<img src="/2017/07/13/IOS视图控制器之间的关系/pushInfo.png" alt="包含关系" title="包含关系"><br>presented 与 presenting关系代码如下：  </p>
-<p><pre><br>ViewController <em>viewControllerA = [[ViewController alloc] init];<br>ViewController </em>viewControllerB = [[ViewController alloc] init];<br>[viewControllerA presentViewController:viewControllerB animated:YES completion:nil];<br></pre><br>关系见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/presentInfo.png" alt="包含关系" title="包含关系"><br>如果两种关系同时存在关系比较复杂，见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/pushAndPresentInfo.png" alt="包含关系" title="包含关系"> </p>
-
-          
+          <p>[xxx.navigationController pushViewController:yyy animated:YES/NO];<br>[xxx.navigationController popViewControllerAnimated:YES?NO];<br>以及<br>[xxx presentViewController:yyy animated:YES/NO completion:nil];<br>[xxx dismissViewControllerAnimated:YES/NO completion:nil];<br>以上几个关于视图转换的方法我们在开发过程中经常用到，但是在这些方法在执行完成之后各个viewController之间是以什么样的关系存在的，没有具体的想过，之前也看过一篇关于相关内容的文章，时间久了再想看时文章已经找不到了，所以这次打算写代码测一下结果，并总结记录下来:<br>UIViewController分为两种类型：<br>viewController容器，如：UITabBarController、UINavigationController等<br>viewcontroller：UIViewController及其自定义的子类<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/13/IOS视图控制器之间的关系/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -458,11 +580,13 @@
 
       
         
-          
-            <img src="/2017/04/10/https简要介绍/https_img.png" alt="https请求过程" title="https请求过程">
-<p>HTTPS其实是有两部分组成：HTTP + SSL / TLS，<br>也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据<br>1:客户端发起HTTPS请求<br>这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。<br>2:服务端的配置<br>采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。<br>3:传送证书<br>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。<br>4:客户端解析证书<br>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。<br>5:传送加密信息<br>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。<br>6:服务段解密信息<br>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。<br>7:传输加密后的信息<br>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原<br>8:客户端解密信息<br>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
-
-          
+          <img src="/2017/04/10/https简要介绍/https_img.png" alt="https请求过程" title="https请求过程">
+<p>HTTPS其实是有两部分组成：HTTP + SSL / TLS，<br>也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/10/https简要介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1537,150 +1661,6 @@ UITableView在执行alloc方法后会返回一个对象，然后在执行该对�
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/08/JS类的声明/" itemprop="url">
-                  NJCS-JS类的声明
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-08T21:46:48+08:00" content="2017-03-08">
-              2017-03-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术文章/" itemprop="url" rel="index">
-                    <span itemprop="name">技术文章</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/08/JS类的声明/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/JS类的声明/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>如果我想定义一个名字为MineViewController的JS类，代码如下：</p>
-<pre>
-defineClass("MineViewController:NJCSBaseViewController", {
-  init:function(){
-    //doSomething
-  },
-  viewWillAppear:function(){
-    //doSomething
-  },
-  viewDidAppear:function(){
-    //doSomething
-  },
-  viewWillDisappear:function(){
-    //doSomething
-  },
-  viewDidDisappear:function(){
-    //doSomething
-  },
-  dealloc:function(){
-    //doSomething
-  }
-    });
-</pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/08/JS类的声明/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1726,7 +1706,7 @@ defineClass("MineViewController:NJCSBaseViewController", {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

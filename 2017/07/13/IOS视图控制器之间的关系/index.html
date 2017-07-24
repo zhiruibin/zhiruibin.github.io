@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://www.imcoder.com/2017/07/13/IOS视图控制器之间的关系/pushInfo.png">
 <meta property="og:image" content="http://www.imcoder.com/2017/07/13/IOS视图控制器之间的关系/presentInfo.png">
 <meta property="og:image" content="http://www.imcoder.com/2017/07/13/IOS视图控制器之间的关系/pushAndPresentInfo.png">
-<meta property="og:updated_time" content="2017-07-14T10:32:30.000Z">
+<meta property="og:updated_time" content="2017-07-24T11:41:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS视图控制器之间的关系">
 <meta name="twitter:description" content="[xxx.navigationController pushViewController:yyy animated:YES/NO];[xxx.navigationController popViewControllerAnimated:YES?NO];以及[xxx presentViewController:yyy animated:YES/NO completion:nil];[xxx dism">
@@ -335,9 +335,9 @@
       
 
       
-        <p>[xxx.navigationController pushViewController:yyy animated:YES/NO];<br>[xxx.navigationController popViewControllerAnimated:YES?NO];<br>以及<br>[xxx presentViewController:yyy animated:YES/NO completion:nil];<br>[xxx dismissViewControllerAnimated:YES/NO completion:nil];<br>以上几个关于视图转换的方法我们在开发过程中经常用到，但是在这些方法在执行完成之后各个viewController之间是以什么样的关系存在的，没有具体的想过，之前也看过一篇关于相关内容的文章，时间久了再想看时文章已经找不到了，所以这次打算写代码测一下结果，并总结记录下来:<br>UIViewController分为两种类型：<br>viewController容器，如：UITabBarController、UINavigationController等<br>viewcontroller：UIViewController及其自定义的子类<br>viewController之间存在两种关系<br>1：包含关系，比如viewControllerA的parentViewCONtroller是viewControllerB<br>2：presented与presenting关系，如viewControllerA调用presentViewController:animated:completion:方法后viewControllerB被展示出来，这时viewControllerA的presentedViewController是viewControllerB，而viewControllerB的presentingViewController是viewControllerA<br>我们先说一下包含关系代码如下：</p>
+        <p>[xxx.navigationController pushViewController:yyy animated:YES/NO];<br>[xxx.navigationController popViewControllerAnimated:YES?NO];<br>以及<br>[xxx presentViewController:yyy animated:YES/NO completion:nil];<br>[xxx dismissViewControllerAnimated:YES/NO completion:nil];<br>以上几个关于视图转换的方法我们在开发过程中经常用到，但是在这些方法在执行完成之后各个viewController之间是以什么样的关系存在的，没有具体的想过，之前也看过一篇关于相关内容的文章，时间久了再想看时文章已经找不到了，所以这次打算写代码测一下结果，并总结记录下来:<br>UIViewController分为两种类型：<br>viewController容器，如：UITabBarController、UINavigationController等<br>viewcontroller：UIViewController及其自定义的子类<br><a id="more"></a><br>viewController之间存在两种关系<br>1：包含关系，比如viewControllerA的parentViewCONtroller是viewControllerB<br>2：presented与presenting关系，如viewControllerA调用presentViewController:animated:completion:方法后viewControllerB被展示出来，这时viewControllerA的presentedViewController是viewControllerB，而viewControllerB的presentingViewController是viewControllerA<br>我们先说一下包含关系代码如下：</p>
 <p><pre><br>-(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions {<br>    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];<br>    UITabBarController <em>tabBarController = [[UITabBarController alloc] init];<br>    UINavigationController </em>navigationController = [[UINavigationController alloc] init];<br>    ViewController *viewController = [[ViewController alloc] init];<br>    [navigationController addChildViewController:viewController];<br>    [tabBarController addChildViewController:navigationController];<br>    self.window.rootViewController = tabBarController;<br>    [self.window makeKeyAndVisible];<br>    return YES;<br>}<br></pre><br>结果就不详细解释了关系图如下:<img src="/2017/07/13/IOS视图控制器之间的关系/pushInfo.png" alt="包含关系" title="包含关系"><br>presented 与 presenting关系代码如下：  </p>
-<p><pre><br>ViewController <em>viewControllerA = [[ViewController alloc] init];<br>ViewController </em>viewControllerB = [[ViewController alloc] init];<br>[viewControllerA presentViewController:viewControllerB animated:YES completion:nil];<br></pre><br>关系见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/presentInfo.png" alt="包含关系" title="包含关系"><br>如果两种关系同时存在关系比较复杂，见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/pushAndPresentInfo.png" alt="包含关系" title="包含关系"> </p>
+<p><pre><br>ViewController <em>viewControllerA = [[ViewController alloc] init];<br>ViewController </em>viewControllerB = [[ViewController alloc] init];<br>[viewControllerA presentViewController:viewControllerB animated:YES completion:nil];<br></pre><br>关系见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/presentInfo.png" alt="包含关系" title="包含关系"><br>如果两种关系同时存在关系比较复杂，见下图：<br><img src="/2017/07/13/IOS视图控制器之间的关系/pushAndPresentInfo.png" alt="包含关系" title="包含关系"></p>
 
       
     </div>
@@ -380,6 +380,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/24/NJCS设计理论篇/" rel="prev" title="NJCS设计理论篇">
+                NJCS设计理论篇 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -454,7 +458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

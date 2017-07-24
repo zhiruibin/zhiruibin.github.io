@@ -84,49 +84,22 @@
 
 
 
-<meta name="description" content="整体设计
-javaScriptCore介绍
-OC：uiviewcontroller与JS：ViewController的匹配
-方法调用：封装对象的方法调用、Native方法的调用
-正则方法替换
-方法调用时参数的设置与返回值获取
-UIButton的设计
-UITableView的设计
-UITableViewCell的设计
-数据类型的转换与扩展
-NSUserDefault扩展
-Notification">
+<meta name="description" content="闲言稍絮什么是动态功能部署、动态功能部署有什么优缺点、市面上都有哪些动态功能部署的方案、这些方案横向对比优点缺点各是什么等等，类似的问题及答案就不赘述了，某度一搜相关的文章有好几十页，有兴趣的可以去看看，下面直接讨论我们的实现方式。NJCS的整体介绍">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NJCS系列--NJCS实现原理">
-<meta property="og:url" content="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/index.html">
+<meta property="og:title" content="NJCS设计理论篇">
+<meta property="og:url" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/index.html">
 <meta property="og:site_name" content="imCoder">
-<meta property="og:description" content="整体设计
-javaScriptCore介绍
-OC：uiviewcontroller与JS：ViewController的匹配
-方法调用：封装对象的方法调用、Native方法的调用
-正则方法替换
-方法调用时参数的设置与返回值获取
-UIButton的设计
-UITableView的设计
-UITableViewCell的设计
-数据类型的转换与扩展
-NSUserDefault扩展
-Notification">
-<meta property="og:updated_time" content="2017-03-11T06:25:44.000Z">
+<meta property="og:description" content="闲言稍絮什么是动态功能部署、动态功能部署有什么优缺点、市面上都有哪些动态功能部署的方案、这些方案横向对比优点缺点各是什么等等，类似的问题及答案就不赘述了，某度一搜相关的文章有好几十页，有兴趣的可以去看看，下面直接讨论我们的实现方式。NJCS的整体介绍">
+<meta property="og:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/zhengtisheji.png">
+<meta property="og:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/zhengtijiaohu.png">
+<meta property="og:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/shujuliu.png">
+<meta property="og:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/leixingbiaoshi.png">
+<meta property="og:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/zujiansheji.png">
+<meta property="og:updated_time" content="2017-07-24T11:40:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NJCS系列--NJCS实现原理">
-<meta name="twitter:description" content="整体设计
-javaScriptCore介绍
-OC：uiviewcontroller与JS：ViewController的匹配
-方法调用：封装对象的方法调用、Native方法的调用
-正则方法替换
-方法调用时参数的设置与返回值获取
-UIButton的设计
-UITableView的设计
-UITableViewCell的设计
-数据类型的转换与扩展
-NSUserDefault扩展
-Notification">
+<meta name="twitter:title" content="NJCS设计理论篇">
+<meta name="twitter:description" content="闲言稍絮什么是动态功能部署、动态功能部署有什么优缺点、市面上都有哪些动态功能部署的方案、这些方案横向对比优点缺点各是什么等等，类似的问题及答案就不赘述了，某度一搜相关的文章有好几十页，有兴趣的可以去看看，下面直接讨论我们的实现方式。NJCS的整体介绍">
+<meta name="twitter:image" content="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/zhengtisheji.png">
 
 
 
@@ -147,10 +120,10 @@ Notification">
 
 
 
-  <link rel="canonical" href="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/"/>
+  <link rel="canonical" href="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/"/>
 
 
-  <title> NJCS系列--NJCS实现原理 | imCoder </title>
+  <title> NJCS设计理论篇 | imCoder </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -298,7 +271,7 @@ Notification">
             
             
               
-                NJCS系列--NJCS实现原理
+                NJCS设计理论篇
               
             
           </h1>
@@ -310,8 +283,8 @@ Notification">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T11:12:14+08:00" content="2017-03-07">
-              2017-03-07
+            <time itemprop="dateCreated" datetime="2017-07-24T19:23:25+08:00" content="2017-07-24">
+              2017-07-24
             </time>
           </span>
 
@@ -340,8 +313,8 @@ Notification">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/07/NJCS系列-NJCS实现原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/NJCS系列-NJCS实现原理/" itemprop="commentsCount"></span>
+                <a href="/2017/07/24/NJCS设计理论篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/24/NJCS设计理论篇/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -364,22 +337,12 @@ Notification">
       
 
       
-        <ul>
-<li><a href="">整体设计</a></li>
-<li><a href="">javaScriptCore介绍</a></li>
-<li><a href="">OC：uiviewcontroller与JS：ViewController的匹配</a></li>
-<li><a href="">方法调用：封装对象的方法调用、Native方法的调用</a></li>
-<li><a href="">正则方法替换</a></li>
-<li><a href="">方法调用时参数的设置与返回值获取</a></li>
-<li><a href="">UIButton的设计</a></li>
-<li><a href="">UITableView的设计</a></li>
-<li><a href="">UITableViewCell的设计</a></li>
-<li><a href="">数据类型的转换与扩展</a></li>
-<li><a href="">NSUserDefault扩展</a></li>
-<li><a href="">Notification扩展</a></li>
-<li><a href="">Http扩展</a></li>
-<li><a href="">JS版本控制</a></li>
-</ul>
+        <p>闲言稍絮<br>什么是动态功能部署、动态功能部署有什么优缺点、市面上都有哪些动态功能部署的方案、这些方案横向对比优点缺点各是什么等等，类似的问题及答案就不赘述了，某度一搜相关的文章有好几十页，有兴趣的可以去看看，下面直接讨论我们的实现方式。<br>NJCS的整体介绍<br><img src="/2017/07/24/NJCS设计理论篇/zhengtisheji.png" alt="整体设计" title="整体设计"><br><a id="more"></a><br>上图是系统的整体结构图，一共包含了四层，从上至下依次是：<br>JS业务层：包含了所有的业务操作（如：组件创建、属性设置、业务逻辑实现）。<br>JS核心层：包含了JS类的定义，继承的实现，操作信息的解析和封装。<br>Native核心层：主要包含了操作信息解封，操作执行，外挂功能（如：数据类型解析、页面管理、网络请求、弹窗管理、数据库操作、多线程操作等）管理。<br>Native展现层：Native核心层的操作执行结果最终都会在该层进行展示。<br>这四层的交互流程如下：<br>JS业务层将操作数据提交到JS核心层，JS核心层将操作数据解析封装提交到Native核心层，Native核心层解封操作数据并且执行这些操作，操作执行的结果最终都会在Native展现层进行展示。<br>NJCS系统的设计<br>试想一下如果我们能动态的创建UIView实例，并且动态的设置这些实例的各个属性，那我们就能够动态的实现业务页面，如下图：<br><img src="/2017/07/24/NJCS设计理论篇/zhengtijiaohu.png" alt="整体交互" title="整体交互"><br>我们在Native环境中创建UIViewController实例viewController_native的同时在JS环境内也创建了一个与之对应的NJCSUIViewController实例viewController_js，系统在调用实例viewController_native生命周期方法（如：init（）、viewDidLoad()、viewWillAppear（）、viewDidAppear（）等）时，改方法内部就会去调用实例viewController_js中相对应的方法。如此，本来需要在Native中完成的逻辑我们移到了JS中，所有逻辑在viewController_js中实现即可。<br>NJCS的设计在实现过程中遇到的问题<br>1：在JS环境内调用Native相关方法<br>如何在JS环境内初始化Native组件，如何在JS环境内对Native组件进行相关操作。<br>JS业务层源码如下：</p>
+<p><pre><br>var UILabel  = GetNativeClass(“NJCSUILabel”);<br>var labelInstance = UILable.alloc().init()<br>labelInstance.setText(“Hello world, it is NJCS.”);<br></pre><br>流程参见下图：<br><img src="/2017/07/24/NJCS设计理论篇/shujuliu.png" alt="数据流" title="数据流"><br>图中包含了四条数据信息流，包含了Native组件的初始化和设置操作：<br>蓝色的是获取Native类数据信息流：业务层将类名提交到JS核心层，如果缓存中包含该类则直接返回，如果缓存中不包含则将类名提交到Native核心层，Native核心层根据类名获取原生类对象并返回。<br>红色的是alloc获得该类悬挂指针的数据信息流：业务层将原生类对象，想要执行的方法名称以及方法执行时需要的参数提交到JS核心层，JS核心层解析并封装相关的数据信息，然后将封装后的数据信息提交到Native核心层，Native核心层解封数据信息，并根据这些信息执行相应的方法，将执行结果返回。<br>绿色的是init获得该类实例的数据信息流：同上<br>浅蓝色的是对该实例进行其他操作的数据信息流：同上，只是该操作是没有返回结果，最终的执行结果会在Native展现层进行展示。<br><br>其实Native的类对象，以及Native实例对象（上图所示中的id（2） 对应的Wrapper object）是不能直接返回给JS业务层的，因为在IOS7及以下操作系统中是会崩溃的，所以操作的执行结果在JS核心层都进行了一次封装，在Native核心层执行时都进行了解封。<br>另外方法在执行时我们选择了NSInvocation，因为可以从里面获取到方法执行时所需参数的数据类型以及方法返回值的数据类型。在NSInvocation.h文件源码里面我们知道有些数据类型我们是可以获得的：<br><img src="/2017/07/24/NJCS设计理论篇/leixingbiaoshi.png" alt="类型标识" title="类型标识"><br>如：NSString对应*、NSArray对应[、STruct{对应等类型，但是其他的id类型对应的都是@，所以在数据类型转换时我们都进行了特殊的处理，具体的实现实现细节这里就不赘述了，感兴趣的可以看一下我们的源代码。<br>2：带有代理的Native组件的处理<br>带有代理的组件如：UIWebView、UITableView，他们的代理方法在被调用的时候如何调用到组件所在的NativeViewController对应的JSViewController的方法。</p>
+<p>为了方便管理和使用所有的原生UI组件都是经过封装（以组合的方式封装进了NJCSUIView中）的，组件的代理在封装的时候一并实现了，同时给当前组件添加了一个owner属性指向当前组件归属的UIViewController（如上图所示），如此，组件的代理方法在被调用的时候，会根据owner找到在js环境中与之对应的JSViewController并运行它的方法。<br><img src="/2017/07/24/NJCS设计理论篇/zujiansheji.png" alt="组件设计" title="组件设计"><br>NJCS的安全控制<br>关于安全我们是从两方面控制的：<br>1：保证JS文件的来源</p>
+<p>文件来源控制我们采用了业界常用的方法（参见上图），通过对文件非对称加密及md5值比对来保证文件来源，这里就不多说了。<br>2：限制Native类的使用权限</p>
+<p>对于一些特殊的类，或者存有敏感信息的类，在系统启动完成后可以通过硬编码的形式注册到系统中去参见上图，JS核心层在请求这些类信息时会去敏感类注册池内进行比对，如果改类已被注册则会抛出异常。</p>
+<p>鉴于时间的限制，整体设计理论篇就到这里了……</p>
 
       
     </div>
@@ -415,17 +378,13 @@ Notification">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/07/NJCS系列-NJCS功能介绍/" rel="next" title="NJCS系列--NJCS使用文档">
-                <i class="fa fa-chevron-left"></i> NJCS系列--NJCS使用文档
+              <a href="/2017/07/13/IOS视图控制器之间的关系/" rel="next" title="IOS视图控制器之间的关系">
+                <i class="fa fa-chevron-left"></i> IOS视图控制器之间的关系
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/07/项目接入/" rel="prev" title="NJCS-项目接入">
-                NJCS-项目接入 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,8 +413,8 @@ Notification">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/07/NJCS系列-NJCS实现原理/"
-           data-title="NJCS系列--NJCS实现原理" data-url="http://www.imcoder.com/2017/03/07/NJCS系列-NJCS实现原理/">
+      <div class="ds-thread" data-thread-key="2017/07/24/NJCS设计理论篇/"
+           data-title="NJCS设计理论篇" data-url="http://www.imcoder.com/2017/07/24/NJCS设计理论篇/">
       </div>
     
   </div>
